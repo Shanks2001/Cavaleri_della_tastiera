@@ -8,10 +8,11 @@ void lvl_7(char *Scelta, int *LIFE)
     char vero5 = '&';
     char vero6[] = "scanf";
 
-        printf("int n=0;\n (int i = 0; i <= 10; i++){\nprintf(\"%%d\", );\n}\n");//for,i
-        scanf("%s", Scelta);
-        do
-        {
+    printf("int n=0;\n (int i = 0; i <= 10; i++){\nprintf(\"%%d\", );\n}\n"); //for, i
+    scanf("%s", Scelta);
+
+    do
+    {
         printf("1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -50,19 +51,19 @@ void lvl_7(char *Scelta, int *LIFE)
     
         while (getchar() != '\n');
 
-        if(strcmp(Scelta, vero2)!=0)
+        if(strcmp(Scelta, vero2) != 0)
             {
                 (*LIFE)--; 
             }
         
         checklife(*LIFE);
     
-    }while(strcmp(Scelta, vero2)!=0);
+    }while(strcmp(Scelta, vero2) != 0);
 
     memset(Scelta, '\0', max); //RESET ARRAY
     
         printf("scrivi cosa manca\n");
-        printf("(numero <= 10){\nprintf(\"%%d\", numero);\nnumero+;\n}\n");//while,+
+        printf("(numero <= 10){\nprintf(\"%%d\", numero);\nnumero+;\n}\n"); //while,+
         scanf("%s", Scelta);
     do
     {
@@ -194,3 +195,4 @@ void lvl_7(char *Scelta, int *LIFE)
 
     memset(Scelta, '\0', max); //RESET ARRAY
 }
+ 
