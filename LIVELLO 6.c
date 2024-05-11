@@ -46,7 +46,7 @@ void lvl_6(char *Scelta, int *LIFE)
 
         if (strcmp(Scelta, vero1) != 0)
             {
-                (*live)--;
+                (*LIFE)--;
             }
        
         checklife(*LIFE);
@@ -72,47 +72,49 @@ void lvl_6(char *Scelta, int *LIFE)
     
         while (getchar() != '\n');
 
-        if(strcmp(scrivi, vero2)!=0)
+        if(strcmp(Scelta, vero2)!=0)
             {
-                (*live)--;
+                (*LIFE)--;
             }
     
-        if(*live==0)
+        if(*LIFE==0)
         {
             return;
         }
 
-    }while(strcmp(scrivi, vero2)!=0);
+    }while(strcmp(Scelta, vero2)!=0);
 
-    memset(scrivi, '\0', max);
+    memset(Scelta, '\0', max);
 
     do
     {
         printf("2:");
-        scanf("%s", scrivi);
-        if(strcmp(scrivi, vero1)!=0)
+        scanf("%s", Scelta);
+
+        if(strcmp(Scelta, vero1)!=0)
             {
-                (*live)--; 
+                (*LIFE)--; 
             }
         
         checklife(*LIFE);
     
-    }while(strcmp(scrivi, vero1)!=0);
+    }while(strcmp(Scelta, vero1)!=0);
 
-    memset(scrivi, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', max); //RESET ARRAY
 
     do
     {
         printf("3:");
-        scanf("%s", scrivi);    
-        if(strcmp(scrivi, vero)!=0)
+        scanf("%s", Scelta);
+
+        if(strcmp(Scelta, vero)!=0)
             {
-                (*live)--; 
+                (*LIFE)--; 
             }
     
     checklife(*LIFE);
     
-    }while(strcmp(scrivi, vero)!=0);
+    }while(strcmp(Scelta, vero)!=0);
 
-    memset(scrivi, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', max); //RESET ARRAY
 }
