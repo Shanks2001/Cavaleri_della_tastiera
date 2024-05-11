@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.io>
 
+#define max 100;
+
 int Scelta() {
     char Scelta;
     scanf(" %c", &Scelta);
