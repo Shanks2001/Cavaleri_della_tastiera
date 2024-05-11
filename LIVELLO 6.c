@@ -1,28 +1,32 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <string.h>
-void livelo_6(char *scrivi, int *live);
+void lvl_6(char *Scelta, int *LIFE);
 
 #define max 100
-int main(){
-    char scrivi[max];
-    int live=3;
-    livelo_6(scrivi, &live);
-    printf("LIVELO 7");
+int main()
+{
+    char Scelta[max];
+    int LIFE=3;
+    lvl_6(Scelta, &LIFE);
+    printf("~ ~ LIVELLO 6 ~ ~");
 
     return 0;
 }
-void livelo_6(char *scrivi, int *live){
+void lvl_6(char *Scelta, int *LIFE){
     char vero[] = "printf";
     char vero2[] = ";";
-    char vero1 []="&";
+    char vero1[]= "&";
     
-do {
-    printf("scrivi cosa manca per far stampare a schermo\n(\"franco bibi\");\n");//printf
-    scanf("%s", scrivi);
-    int len = strlen(scrivi);
+do 
+{
+    printf("Scrivi cosa manca per far stampare a schermo\n(\"franco bibi\");\n");//printf
+    scanf("%s", Scelta);
+    int len = strlen(Scelta);
 
-    if (scrivi[len - 1] == '\n')
-        scrivi[len - 1] = '\0';
+    if (Scelta[len - 1] == '\n')
+    {
+        Scelta[len - 1] = '\0';
+    }
     while (getchar() != '\n');
     
     if (strcmp(scrivi, vero) != 0)
