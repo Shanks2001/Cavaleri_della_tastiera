@@ -28,5 +28,30 @@ void lvl_save ( LVL_P )
 
 lvl_
 
+void cekpoin(int *live);
+void readckpoin(int *live);
 
+int main(){
+    int live =3; 
+    readckpoin(&live);
+    cekpoin(&live);
+    printf("%d", live);
+    return 0;
+}
+
+void cekpoin(int *live){
+ FILE *fp=fopen("life.txt", "w+");
+        if(fp==NULL)
+    return;
+ fprintf(fp, "%d", *live);
+ fclose(fp);
+}
+
+void readckpoin(int *live){
+    FILE *fp2=fopen("life.txt", "r+");
+        if(fp2==NULL)
+         return;
+    fscanf(fp2,"%d", live);
+    fclose(fp2);
+}
 #endif // FUNCTION_H
