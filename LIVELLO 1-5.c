@@ -18,19 +18,34 @@ int scelta() {
 }
 void GAMEOVER();
 void END();
-void livello_1(int *life);
-void livello_2(int *life);
-void livello_3(int *life);
-void livello_4(int *life);
-void livello_5(int *life);
+void livello_1(int *LIFE);
+void livello_2(int *LIFE);
+void livello_3(int *LIFE);
+void livello_4(int *LIFE);
+void livello_5(int *LIFE);
+void checklife(int *LIFE);
+
+//VARIABILE CHIAMATA "LIFE"
+
+void checklife(int *LIFE)
+{
+ if (*LIFE == 0) 
+        {
+            GAMEOVER();
+            return;
+        }
+}
+
 int main(){
-    int life=3;
+    int LIFE=3;
     printf("~ ~ LIVELLO 1 ~ ~\n");
-    livello_1(&life);
+    livello_1(&LIFE);
     
     return 0;
 }
-void livello_1(int *life){
+
+
+void livello_1(int *LIFE){
     int risposta;
     do
     {
@@ -39,62 +54,67 @@ void livello_1(int *life){
         risposta = scelta();
         if(risposta != 1)
         {
-            (*life)--;
-            printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
+            (*LIFE)--;
+            printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
         }else
         {
         printf("\nCorretto!\n\n");
-        } 
-    if (*life == 0) {
-            GAMEOVER();
-            return;
-            }
+        }
+
+    checklife(*LIFE);
     }while (risposta != 1);
 
     do
     {
     printf(" -- DOMANDA NUMERO 2 -- \n\n A cosa serve il scanf?"); //c
     printf("\n A) E' un costrutto che permette di iterare un valore\n B) Aggiungi uno spazio prima di inserire l'input\n C) Legge un input inserito dall'utente\n");
+    
     risposta = scelta();
+
     if(risposta != 3)
     {
-        (*life)--;
-        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
-    } else
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
+    }else
     {
         printf("\nCorretto!\n\n");
     } 
     
-    if (*life == 0) {
+    if (*LIFE == 0) 
+        {
             GAMEOVER();
-            return;}
+            return;
+        }
     } while(risposta != 3);
 
     do
     {
     printf("--DOMANDA NUMERO 3 --\n\n Che cosa e' l'if?");//a
     printf("\n A) E' un costrutto che permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n B) E' un costrutto che permette di eseguire un altro blocco di istruzioni\n C) E' un costrutto che permete di verificare ulteriori condizioni\n");
+    
     risposta = scelta();
+
     if(risposta != 1)
-      {
-        (*life)--;
-        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
-    } else
+        {
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
+        } else
     {
         printf("\nCorretto!\n\n");
     } 
 
-    if (*life == 0) {
+    if (*LIFE == 0) 
+        {
             GAMEOVER();
             return;
-            }
+        }
     }while(risposta!=1);
 
     printf("~ ~ LIVELLO 2 ~ ~ \n\n");
 
-    livello_2(life);
+    livello_2(LIFE);
 }
-void livello_2(int *life){
+void livello_2(int *LIFE){
         int risposta;
     do{
         printf("--DOMANDA NUMERO 1--\n\n A cosa serve il for?");//b
@@ -102,13 +122,13 @@ void livello_2(int *life){
         risposta = scelta();
         if(risposta != 2)
           {
-        (*life)--;
-        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
     } else
     {
         printf("\nCorretto!\n\n");
     } 
-        if (*life == 0) {
+        if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
@@ -121,14 +141,14 @@ void livello_2(int *life){
     risposta = scelta();
     if(risposta != 2)
     {
-        (*life)--;
-        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
     } else
     {
         printf("\nCorretto!\n\n");
     } 
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;}
     }while(risposta != 2);
@@ -138,23 +158,23 @@ void livello_2(int *life){
     risposta = scelta();
     if(risposta != 3)
     {
-        (*life)--;
-        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *life);
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
     } else
     {
         printf("\nCorretto!\n\n");
     } 
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
     }while(risposta != 3);
 
-    livello_3(life);
+    livello_3(LIFE);
     
 }
-void livello_3(int *life){
+void livello_3(int *LIFE){
         int risposta;
     printf("~ ~ LIVELLO 3 ~ ~\n\n");
     do
@@ -163,8 +183,8 @@ void livello_3(int *life){
         printf("\na)scanf\nb)printf\nc)for\n");//c
         risposta = scelta();
         if(risposta != 3)
-        (*life)--;
-        if (*life == 0) {
+        (*LIFE)--;
+        if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
@@ -176,8 +196,8 @@ void livello_3(int *life){
     printf("\na);\nb),\nc)&\n");
     risposta = scelta();
     if(risposta != 3)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;}
     }while(risposta != 3);
@@ -187,17 +207,17 @@ void livello_3(int *life){
     printf("\na);\nb),\nc)&\n");//c
     risposta= scelta();
     if(risposta != 3)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
     }while(risposta != 3);
 
     printf("livelLO 4\n");
-    livello_4(life);
+    livello_4(LIFE);
 }
-void livello_4(int *life){
+void livello_4(int *LIFE){
           int risposta;
     do
     {
@@ -205,8 +225,8 @@ void livello_4(int *life){
         printf("\na)scanf\nb)printf\nc)for\n");//c
         risposta = scelta();
         if(risposta != 3)
-        (*life)--;
-        if (*life == 0) {
+        (*LIFE)--;
+        if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
@@ -218,8 +238,8 @@ void livello_4(int *life){
     printf("\nfor);\nb)l\nc)i++\n");//b
     risposta= scelta();
     if(risposta != 2)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;}
     }while(risposta != 2);
@@ -229,26 +249,26 @@ void livello_4(int *life){
     printf("\na)''\nb))\nc);\n");//a
     risposta= scelta();
     if(risposta != 1)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
     }while(risposta!=1);
 
     printf("livelLO 5\n");
-    livello_5(life);
+    livello_5(LIFE);
     
 }
-void livello_5(int *life){
+void livello_5(int *LIFE){
       int risposta;
     do{
         printf("cosa manca?\n#include<stdio.h>\ntypedef struct{ \nchar via[30];\nchar citta[30];\nint CAP[100];\n}Indirizo;\ntypedef struct {\nchar nome[30];\nchar cognome[30];\nint eta;\nIndirizo indirizoresidente;\n}Persona;\nint main(){\nPersona persona1;\n\nprintf(\"scrivi il nome\");\nscanf(\"%%s\", persona1nome);\nprintf(\"scrivi il cognome\");\nscanf(\"%%s\", persona1cognome);\nprintf(\"scrivi eta\");\nscanf(\"%%d\", &persona1eta);\nprintf(\"scrivi la residenza (via, cita, CAP)\");\nscanf(\"%%s %%s %%d\", persona1.indirizoresidente.via, persona1.indirizoresidente.citta, &persona1.indirizoresidente.CAP);\ngetchar();\n}");
     printf("\na)return 0;\nb).\nc);\n");//b
         risposta = scelta();
         if(risposta != 2)
-        (*life)--;
-        if (*life == 0) {
+        (*LIFE)--;
+        if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
@@ -259,8 +279,8 @@ void livello_5(int *life){
     printf("\na)int somma(int a, int b);\nb)somma(n1,n2)\nc)getchar();\n");//a
     risposta = scelta();
     if(risposta != 1)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;}
     }while(risposta != 1);
@@ -270,8 +290,8 @@ void livello_5(int *life){
     printf("\na)%%d\nb)%%p\nc)*\n");//c
     risposta = scelta();
     if(risposta != 3)
-    (*life)--;
-    if (*life == 0) {
+    (*LIFE)--;
+    if (*LIFE == 0) {
             GAMEOVER();
             return;
             }
