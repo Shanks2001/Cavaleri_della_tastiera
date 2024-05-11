@@ -18,11 +18,11 @@ int scelta() {
 }
 void GAMEOVER();
 void END();
-void livello_1(int *LIFE);
-void livello_2(int *LIFE);
-void livello_3(int *LIFE);
-void livello_4(int *LIFE);
-void livello_5(int *LIFE);
+void lvl_1(int *LIFE);
+void lvl_2(int *LIFE);
+void lvl_3(int *LIFE);
+void lvl_4(int *LIFE);
+void lvl_5(int *LIFE);
 void checklife(int *LIFE);
 
 //VARIABILE CHIAMATA "LIFE"
@@ -45,7 +45,7 @@ int main(){
 }
 
 
-void livello_1(int *LIFE){
+void lvl_1(int *LIFE){
     int risposta;
     do
     {
@@ -114,7 +114,7 @@ void livello_1(int *LIFE){
 
     livello_2(LIFE);
 }
-void livello_2(int *LIFE){
+void lvl_2(int *LIFE){
         int risposta;
     do{
         printf("--DOMANDA NUMERO 1--\n\n A cosa serve il for?");//b
@@ -174,7 +174,7 @@ void livello_2(int *LIFE){
     livello_3(LIFE);
     
 }
-void livello_3(int *LIFE){
+void lvl_3(int *LIFE){
         int risposta;
     printf("~ ~ LIVELLO 3 ~ ~\n\n");
     do
@@ -217,7 +217,7 @@ void livello_3(int *LIFE){
     printf("livelLO 4\n");
     livello_4(LIFE);
 }
-void livello_4(int *LIFE){
+void lvl_4(int *LIFE){
           int risposta;
     do
     {
@@ -260,7 +260,7 @@ void livello_4(int *LIFE){
     livello_5(LIFE);
     
 }
-void livello_5(int *LIFE){
+void lvl_5(int *LIFE){
       int risposta;
     do{
         printf("cosa manca?\n#include<stdio.h>\ntypedef struct{ \nchar via[30];\nchar citta[30];\nint CAP[100];\n}Indirizo;\ntypedef struct {\nchar nome[30];\nchar cognome[30];\nint eta;\nIndirizo indirizoresidente;\n}Persona;\nint main(){\nPersona persona1;\n\nprintf(\"scrivi il nome\");\nscanf(\"%%s\", persona1nome);\nprintf(\"scrivi il cognome\");\nscanf(\"%%s\", persona1cognome);\nprintf(\"scrivi eta\");\nscanf(\"%%d\", &persona1eta);\nprintf(\"scrivi la residenza (via, cita, CAP)\");\nscanf(\"%%s %%s %%d\", persona1.indirizoresidente.via, persona1.indirizoresidente.citta, &persona1.indirizoresidente.CAP);\ngetchar();\n}");
