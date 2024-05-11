@@ -23,13 +23,10 @@ void lvl_save ( LVL_P )
     
     fputs ( "%d", Actual_lvl );
     
-    
 }
 
 
-
-
-
+lvl_
 
 
 #endif // FUNCTION_H
