@@ -1,11 +1,11 @@
 void lvl_7(char *Scelta, int *LIFE)
 {
     char vero[] = "for";
-    char vero2 = "i";
+    char vero2[]= "i";
     char vero3[] = "while";
-    char vero1 = "+";
+    char vero1[]= "+";
     char vero4[] = "somma";
-    char vero5 = "&";
+    char vero5[]= "&";
     char vero6[] = "scanf";
 
     printf("int n=0;\n (int i = 0; i <= 10; i++){\nprintf(\"%%d\", );\n}\n"); //for, i
