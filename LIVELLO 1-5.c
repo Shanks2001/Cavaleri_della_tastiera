@@ -22,11 +22,14 @@ int Scelta() {
 }
 void GAMEOVER();
 void END();
+
 void lvl_1(int *LIFE);
 void lvl_2(int *LIFE);
 void lvl_3(int *LIFE);
 void lvl_4(int *LIFE);
 void lvl_5(int *LIFE);
+void lvl_6(int *LIFE);
+
 void checklife(int *LIFE);
 
 //VARIABILE CHIAMATA "LIFE"
