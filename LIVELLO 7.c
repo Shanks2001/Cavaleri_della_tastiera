@@ -1,42 +1,196 @@
-#include<stdio.h>
-#include <string.h>
+void lvl_7(char *Scelta, int *LIFE)
+{
+    char vero[] = "for";
+    char vero2 = 'i';
+    char vero3[] = "while";
+    char vero1= '+';
+    char vero4[] = "somma";
+    char vero5= '&';
+    char vero6[] = "scanf";
 
-#define max 100
-int main(){
-    char scrivi[max];
+        printf("int n=0;\n (int i = 0; i <= 10; i++){\nprintf(\"%%d\", );\n}\n");//for,i
+        scanf("%s", Scelta);
+        do
+        {
+        printf("1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
 
-    printf("scrivi cosa manca\n");
-   
-    printf("int n=0;\n (int i = 0; i <= 10; i++){\nprintf(\"\", i);\n}\n");//for,%d
-    printf("1:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("2:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-
-    memset(scrivi, '\0', sizeof(scrivi));
-
-    printf("scrivi cosa manca\n");
-    printf("(numero <= 10){\nprintf(\"\", numero);\nnumero++;\n}\n");//while,%d
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
     
-   printf("1:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("2:");
-    fgets(scrivi, sizeof(scrivi), stdin);
+        while (getchar() != '\n');
 
-    memset(scrivi, '\0', sizeof(scrivi));
+        if(strcmp(Scelta, vero)!=0)
+            {
+                (*LIFE)--;
+            }
+    
+        if(*LIFE==0)
+        {
+            return;
+        }
 
+    }while(strcmp(Scelta, vero)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero2)!=0)
+            {
+                (*LIFE)--; 
+            }
+        
+        checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero2)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+    
+        printf("scrivi cosa manca\n");
+        printf("(numero <= 10){\nprintf(\"%%d\", numero);\nnumero+;\n}\n");//while,+
+        scanf("%s", Scelta);
+    do
+    {
+        printf("1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero3)!=0)
+            {
+                (*LIFE)--;
+            }
+    
+        if(*LIFE==0)
+        {
+            return;
+        }
+
+    }while(strcmp(Scelta, vero3)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero1)!=0)
+            {
+                (*LIFE)--; 
+            }
+        
+        checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero1)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+    
     printf("scrivi cosa manca\n");//somma,&,scanf,;
-    printf("int a, b, ;\nsomma= a+b;\nprintf(\"a =\");\nscanf(\"%%d\", a);\nprintf(\"b =\");\n(\"%%d\", &b)\nprintf( \"somma = %%d\" , somma);\n");
-    
-    printf("1:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("2:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("3:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("4:");
-    fgets(scrivi, sizeof(scrivi), stdin);
-    printf("LIVELO 8");
 
-    return 0;
+    printf("int a, b, ;\nsomma= a+b;\nprintf(\"a =\");\nscanf(\"%%d\", a);\nprintf(\"b =\");\n(\"%%d\", &b)\nprintf( \"somma = %%d\" , somma);\n");
+
+    do
+    {
+        printf("1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero4)!=0)
+            {
+                (*LIFE)--;
+            }
+    
+        if(*LIFE==0)
+        {
+            return;
+        }
+
+    }while(strcmp(Scelta, vero4)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero5)!=0)
+            {
+                (*LIFE)--; 
+            }
+        
+        checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero5)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    do
+    {
+        printf("3:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero6)!=0)
+            {
+                (*LIFE)--; 
+            }
+    
+    checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero6)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
 }
