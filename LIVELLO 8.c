@@ -1,8 +1,4 @@
-#include<stdio.h>
-#include <string.h>
-
-#define max 100
-int main(){
+void livello_8(int *LIFE){
     char vero[]= "i++";
     char vero1[] = ";";
     char vero2[] = "printf";
@@ -12,7 +8,7 @@ int main(){
     char vero6[] = "for";
     char vero7[]= "i";
 
-    char scrivi[max];
+    char Scelta[max];
 
     printf("scrivi cosa manca\n");
    //i++,printf,;
@@ -274,6 +270,4 @@ int main(){
 
     memset(Scelta, '\0', max); //RESET ARRAY
     printf("LIVELO 9");
-
-    return 0;
 }
