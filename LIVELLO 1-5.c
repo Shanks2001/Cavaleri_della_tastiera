@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.io>
+#include <string.h>
 
 #define max 100;
 
@@ -28,15 +28,13 @@ void lvl_2(int *LIFE);
 void lvl_3(int *LIFE);
 void lvl_4(int *LIFE);
 void lvl_5(int *LIFE);
-void lvl_6(int *LIFE);
-
-void checklife(int *LIFE);
+void checklife(int LIFE);
 
 //VARIABILE CHIAMATA "LIFE"
 
-void checklife(int *LIFE)
+void checklife(int LIFE)
 {
- if (*LIFE == 0) 
+ if (LIFE == 0) 
         {
             GAMEOVER();
             return;
@@ -46,7 +44,7 @@ void checklife(int *LIFE)
 int main(){
     int LIFE=3;
     printf("~ ~ LIVELLO 1 ~ ~\n");
-    livello_1(&LIFE);
+    lvl_1(&LIFE);
     
     return 0;
 }
@@ -87,11 +85,8 @@ void lvl_1(int *LIFE){
         printf("\nCorretto!\n\n");
     } 
     
-    if (*LIFE == 0) 
-        {
-            GAMEOVER();
-            return;
-        }
+   checklife(*LIFE);
+   
     } while(risposta != 3);
 
     do
@@ -110,16 +105,13 @@ void lvl_1(int *LIFE){
         printf("\nCorretto!\n\n");
     } 
 
-    if (*LIFE == 0) 
-        {
-            GAMEOVER();
-            return;
-        }
+   checklife(*LIFE);
+   
     }while(risposta!=1);
 
     printf("~ ~ LIVELLO 2 ~ ~ \n\n");
 
-    livello_2(LIFE);
+    lvl_2(LIFE);
 }
 void lvl_2(int *LIFE){
         int risposta;
@@ -135,10 +127,8 @@ void lvl_2(int *LIFE){
     {
         printf("\nCorretto!\n\n");
     } 
-        if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+        checklife(*LIFE);
+        
     }while (risposta != 2);
 
     do
@@ -155,9 +145,9 @@ void lvl_2(int *LIFE){
         printf("\nCorretto!\n\n");
     } 
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;}
+    
+    checklife(*LIFE);
+    
     }while(risposta != 2);
     do{
     printf("--DOMANDA NUMERO 3--\n\n A cosa serve il do while?");//c
@@ -172,13 +162,12 @@ void lvl_2(int *LIFE){
         printf("\nCorretto!\n\n");
     } 
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+    
+    checklife(*LIFE);
+    
     }while(risposta != 3);
 
-    livello_3(LIFE);
+    lvl_3(LIFE);
     
 }
 void lvl_3(int *LIFE){
@@ -191,10 +180,9 @@ void lvl_3(int *LIFE){
         risposta = Scelta();
         if(risposta != 3)
         (*LIFE)--;
-        if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+        
+        checklife(*LIFE);
+        
     }while (risposta != 3);
 
     do
@@ -204,9 +192,9 @@ void lvl_3(int *LIFE){
     risposta = Scelta();
     if(risposta != 3)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;}
+    
+    checklife(*LIFE);
+    
     }while(risposta != 3);
     do
     {
@@ -215,14 +203,13 @@ void lvl_3(int *LIFE){
     risposta= Scelta();
     if(risposta != 3)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+    
+   checklife(*LIFE);
+   
     }while(risposta != 3);
 
     printf("livelLO 4\n");
-    livello_4(LIFE);
+    lvl_4(LIFE);
 }
 void lvl_4(int *LIFE){
           int risposta;
@@ -233,10 +220,9 @@ void lvl_4(int *LIFE){
         risposta = Scelta();
         if(risposta != 3)
         (*LIFE)--;
-        if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+        
+        checklife(*LIFE);
+        
     }while (risposta != 3);
 
     do
@@ -246,9 +232,9 @@ void lvl_4(int *LIFE){
     risposta= Scelta();
     if(risposta != 2)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;}
+    
+    checklife(*LIFE);
+    
     }while(risposta != 2);
     do
     {
@@ -257,40 +243,42 @@ void lvl_4(int *LIFE){
     risposta= Scelta();
     if(risposta != 1)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+    
+    checklife(*LIFE);
+    
     }while(risposta!=1);
 
     printf("livelLO 5\n");
-    livello_5(LIFE);
+    
+    lvl_5(LIFE);
     
 }
 void lvl_5(int *LIFE){
       int risposta;
-    do{
+    do
+    {
         printf("cosa manca?\n#include<stdio.h>\ntypedef struct{ \nchar via[30];\nchar citta[30];\nint CAP[100];\n}Indirizo;\ntypedef struct {\nchar nome[30];\nchar cognome[30];\nint eta;\nIndirizo indirizoresidente;\n}Persona;\nint main(){\nPersona persona1;\n\nprintf(\"scrivi il nome\");\nscanf(\"%%s\", persona1nome);\nprintf(\"scrivi il cognome\");\nscanf(\"%%s\", persona1cognome);\nprintf(\"scrivi eta\");\nscanf(\"%%d\", &persona1eta);\nprintf(\"scrivi la residenza (via, cita, CAP)\");\nscanf(\"%%s %%s %%d\", persona1.indirizoresidente.via, persona1.indirizoresidente.citta, &persona1.indirizoresidente.CAP);\ngetchar();\n}");
     printf("\na)return 0;\nb).\nc);\n");//b
         risposta = Scelta();
         if(risposta != 2)
         (*LIFE)--;
-        if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+        
+        checklife(*LIFE);
+        
     }while (risposta != 2);
 
-    do{
+    do
+    {
     printf("cosa manca?\n#include<stdio.h>\n\nint main(){\nint n1=0;\nint n2=0;\nint n3=0;\nprintf(\"scrivi un valore =\", n1);\nscanf(\"%%d\", &n1);\nprintf(\"scrivi un valore =\", n2);\nscanf(\"%%d\", &n2);\nn3 = somma(n1,n2);\nprintf(\"risultato=%%d\", n3);\nreturn 0;\n}\nint somma(int a, int b){\nint tottale=0;\ntottale = a + b;\nreturn tottale;\n}\n");
     printf("\na)int somma(int a, int b);\nb)somma(n1,n2)\nc)getchar();\n");//a
     risposta = Scelta();
     if(risposta != 1)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;}
+    
+    checklife(*LIFE);
+    
     }while(risposta != 1);
+    
     do
     {
     printf("cosa manca?\n#include<stdio.h>\n#include<string.h>\nint main (){\nint a = 5;\nchar b = 'c';\nint *p1;\nchar *p2;\np1 = &a;\np2 = &b;\nprintf(\"indirizo di due variabili %%p, %%p\", p1,p2);\nprintf(\"il valore delle celle di memoria %%d, %%c\", p1, p2);\n*p1 = 18;\n*p2 = 'a';\nprintf(\"indirizo di due variabili %%p, %%p\", p1, p2);\nprintf(\"il valore delle celle di memoria %%d, %%c\", *p1, *p2);\nreturn 0;\n}");
@@ -298,10 +286,9 @@ void lvl_5(int *LIFE){
     risposta = Scelta();
     if(risposta != 3)
     (*LIFE)--;
-    if (*LIFE == 0) {
-            GAMEOVER();
-            return;
-            }
+    
+    checklife(*LIFE);
+    
     }while(risposta != 3);
 
     printf("LIVELLO 6\n");
@@ -315,6 +302,7 @@ void GAMEOVER(){
     printf("  \t\t\t\tG     G   A    A  MM   MM   E         O     O     VVV     E        R   RR\t \t   \n");
     printf("  \t\t\t\tGGGGGGG   A    A  MM   MM   EEEEEEE    OOOOO       V      EEEEEEE  R     R\t \t  \n");
     printf("\n");
+    exit (1);
 }
 void END(){
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN     NN   DDDDDD\t\t\t   \n");
@@ -322,4 +310,5 @@ void END(){
     printf("  \t\t\t\t\t\t\tEEEEE     NNNN   NN   D      DD\t\t\t\n");
     printf("  \t\t\t\t\t\t\tE         NN NN  NN   D     DD\t\t\t \n");
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN  NN NN   DDDDDD\t\t\t   \n");
+    exit (2);
 }
