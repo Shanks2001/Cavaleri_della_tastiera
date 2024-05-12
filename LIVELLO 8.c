@@ -1,4 +1,4 @@
-void livello_8(int *LIFE){
+void lvl_8(int *LIFE){
     char vero[]= "i++";
     char vero1[] = ";";
     char vero2[] = "printf";
