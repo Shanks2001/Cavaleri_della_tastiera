@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <string.io>
-
+#include <string.h>
+#include <stdlib.h>
 int Scelta() {
     char Scelta;
     scanf(" %c", &Scelta);
