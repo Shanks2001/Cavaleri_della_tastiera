@@ -40,8 +40,7 @@ void checklife(int *LIFE)
 }
 
 int main(){
-    int LIFE = 3;
-    
+       
     Game(&LIFE);
     
     return 0;
@@ -63,6 +62,7 @@ void Game(int *LIFE)
 
 void lvl_1(int *LIFE)
 {
+    int LIFE = 3;
     printf("~ ~ LIVELLO 1 ~ ~\n");
     int risposta;
     do
