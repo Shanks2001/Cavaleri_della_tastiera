@@ -51,6 +51,7 @@ int main(){
 
 
 void lvl_1(int *LIFE){
+     system("cls");
     int risposta;
     printf("~ ~ LIVELLO 1 ~ ~ \n\n");
     do
