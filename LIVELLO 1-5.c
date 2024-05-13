@@ -53,11 +53,6 @@ void Game(int *LIFE)
     lvl_3(int *LIFE);
     lvl_4(int *LIFE);
     lvl_5(int *LIFE);
-    lvl_6(int *LIFE);
-    lvl_7(int *LIFE);
-    lvl_8(int *LIFE);
-    lvl_9(int *LIFE);
-    lvl_10(int *LIFE);
 }
 
 void lvl_1(int *LIFE)
@@ -273,6 +268,7 @@ void lvl_4(int *LIFE)
             }
     }while(risposta!=1);   
 }
+
 void lvl_5(int *LIFE)
 {
     printf("~ ~ LIVELLO 5 ~ ~");
@@ -311,8 +307,6 @@ void lvl_5(int *LIFE)
             return;
             }
     }while(risposta != 3);
-
-    printf("LIVELLO 6\n");
     END();
 }
 void GAMEOVER(){
@@ -323,6 +317,8 @@ void GAMEOVER(){
     printf("  \t\t\t\tG     G   A    A  MM   MM   E         O     O     VVV     E        R   RR\t \t   \n");
     printf("  \t\t\t\tGGGGGGG   A    A  MM   MM   EEEEEEE    OOOOO       V      EEEEEEE  R     R\t \t  \n");
     printf("\n");
+
+    exit(1);
 }
 void END(){
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN     NN   DDDDDD\t\t\t   \n");
@@ -330,4 +326,6 @@ void END(){
     printf("  \t\t\t\t\t\t\tEEEEE     NNNN   NN   D      DD\t\t\t\n");
     printf("  \t\t\t\t\t\t\tE         NN NN  NN   D     DD\t\t\t \n");
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN  NN NN   DDDDDD\t\t\t   \n");
+
+    exit(1);
 }
