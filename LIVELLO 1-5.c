@@ -144,8 +144,7 @@ void lvl_2(int *LIFE){
     } else
     {
         printf("\nCorretto!\n\n");
-    } 
-    (*LIFE)--;
+    }
     
     checklife(*LIFE);
     
@@ -162,7 +161,6 @@ void lvl_2(int *LIFE){
     {
         printf("\nCorretto!\n\n");
     } 
-    (*LIFE)--;
     
     checklife(*LIFE);
     
@@ -192,7 +190,13 @@ void lvl_3(int *LIFE){
     printf("\na);\nb),\nc)&\n");
     risposta = Scelta();
     if(risposta != 3)
-    (*LIFE)--;
+   {
+        (*LIFE)--;
+        printf("\nRisposta sbagliata! \n Hai perso una vita! \n Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\nCorretto!\n\n");
+    } 
     
     checklife(*LIFE);
     
