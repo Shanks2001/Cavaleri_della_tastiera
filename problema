@@ -1,0 +1,24 @@
+C'è un problemma con questa funzione 
+
+void ripeti(int LIFE){
+    char scelta;
+    
+    while (1) {
+        printf("Vuoi riprovare? (y/n): ");
+        scanf(" %c", &scelta);
+        switch (scelta) {
+            case 'y':
+            case 'Y':
+                LIFE=3;
+                lvl_1(&LIFE);
+                break; 
+            case 'n':
+            case 'N':
+                exit(0);
+            default:
+                printf("Scelta non valida. Riprova.\n");
+                break;
+        }        
+    }
+}
+quando le vite vengono rimpostate a 3 alcune volte vanno fuori scala se mi potte agliutare a capire cosa sucede ty ❤
