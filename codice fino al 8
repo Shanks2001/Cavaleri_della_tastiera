@@ -1,0 +1,1124 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define max 100
+
+int Scelta() {
+    char Scelta;
+    printf("  \t\t\t\t:");
+    scanf(" %c", &Scelta);
+    switch(Scelta) {
+        case 'a':
+        case 'A':
+            return 1;
+        case 'b':
+        case 'B':
+            return 2;
+        case 'c':
+        case 'C':
+            return 3;
+        default:
+            return 4;
+    }
+}
+void GAMEOVER(int LIFE);
+void END(int LIFE);
+void ripeti(int *LIFE);
+void lvl_1(int *LIFE);
+void lvl_2(int *LIFE);
+void lvl_3(int *LIFE);
+void lvl_4(int *LIFE);
+void lvl_5(int *LIFE);
+void lvl_6(int *LIFE);
+void lvl_7( int *LIFE);
+void lvl_8(int *LIFE);
+void checklife(int LIFE);
+
+//VARIABILE CHIAMATA "LIFE"
+
+void checklife(int LIFE)
+{
+ if (LIFE == 0) 
+        {
+            system("cls");
+            GAMEOVER(LIFE);
+        }
+}
+
+int main(){
+    int LIFE=3;
+    lvl_1(&LIFE);
+    
+    return 0;
+}
+
+
+void lvl_1(int *LIFE){
+    int risposta;
+    printf("  \t\t\t\t~ ~ LIVELLO 1 ~ ~ \n\n");
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");//a
+
+        printf("  \t\t\t\tA cosa serve il printf?\n");
+        printf("  \t\t\t\tA) Stampa il testo su schermo\n");
+        printf("  \t\t\t\tB) Legge un numero intero inserito dall'utente\n");
+        printf("  \t\t\t\tC) E' un costrutto che permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n");
+        risposta = Scelta();
+        if(risposta != 1)
+        {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        }
+
+    checklife(*LIFE);
+    }while (risposta != 1);
+
+    do
+    {
+        printf("  \t\t\t\t -- DOMANDA NUMERO 2 -- \n"); //c
+
+        printf("  \t\t\t\tA cosa serve il scanf?\n");
+        printf("  \t\t\t\tA) E' un costrutto che permette di iterare un valore\n");
+        printf("  \t\t\t\tB) Aggiungi uno spazio prima di inserire l'input\n");
+        printf("  \t\t\t\tC) Legge un input inserito dall'utente\n");
+        risposta = Scelta();
+
+        if(risposta != 3)
+        {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        } 
+    
+        checklife(*LIFE);
+   
+    } while(risposta != 3);
+
+    do
+    {
+        printf("  \t\t\t\t--DOMANDA NUMERO 3 --\n");//a
+
+        printf("  \t\t\t\tChe cosa e' l'if?");
+        printf("\n  \t\t\t\t A) E' un costrutto che permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n");
+        printf("  \t\t\t\tB) E' un costrutto che permette di eseguire un altro blocco di istruzioni\n");
+        printf("  \t\t\t\tC) E' un costrutto che permete di verificare ulteriori condizioni\n");
+        risposta = Scelta();
+
+        if(risposta != 1)
+        {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        } else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        } 
+
+        checklife(*LIFE);
+   
+    }while(risposta!=1);
+
+    system("cls");
+    lvl_2(LIFE);
+}
+void lvl_2(int *LIFE){
+        printf("  \t\t\t\t~ ~ LIVELLO 2 ~ ~ \n\n");
+        int risposta;
+    do{
+        printf("  \t\t\t\t--DOMANDA NUMERO 1--\n ");//b
+        printf("  \t\t\t\tA cosa serve il for?\n");
+        printf("  \t\t\t\tA) E' un costrutto che permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n");
+        printf("  \t\t\t\tB) E' utilizzato per eseguire un blocco di istruzioni un numero fissato di volte\n");
+        printf("  \t\t\t\tC) Garantisce l'esecuzione del blocco di istruzioni almeno una volta prima di controllare la condizione.\n");
+        risposta = Scelta();
+        if(risposta != 2)
+          {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        } else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        } 
+        checklife(*LIFE);
+        
+    }while (risposta != 2);
+
+    do
+    {
+        printf("  \t\t\t\t--DOMANDA NUMERO 2--\n");//b
+        printf("  \t\t\t\tA cosa serve il while?");
+        printf("\n  \t\t\t\tA) E' un costrutto che permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n");
+        printf("  \t\t\t\tB) E' utilizzato per eseguire un blocco di istruzioni finche' una condizione specificata e' vera.\n");
+        printf("  \t\t\t\tC) E' un costrutto che permette di verificare ulteriori condizioni\n");
+        risposta = Scelta();
+        if(risposta != 2)
+        {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        } else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        } 
+        checklife(*LIFE);
+    
+    }while(risposta != 2);
+
+    do{
+        printf("  \t\t\t\t--DOMANDA NUMERO 3--\n ");//c
+        printf("  \t\t\t\tA cosa serve il do while?\n");
+        printf("  \t\t\t\tA) E' utilizzato per eseguire un blocco di istruzioni un numero fissato di volte\n");
+        printf("  \t\t\t\tB)E' un costrutto che permette di eseguire un altro blocco di istruzioni\n");
+        printf("  \t\t\t\tC) Garantisce l'esecuzione del blocco di istruzioni almeno una volta prima di controllare la condizione.\n");
+        risposta = Scelta();
+        if(risposta != 3)
+        {
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        } else
+        {
+            printf("\n  \t\t\t\tCorretto!\n\n");
+        } 
+        checklife(*LIFE);
+    
+    }while(risposta != 3);
+
+    system("cls");
+
+    lvl_3(LIFE);
+    
+}
+void lvl_3(int *LIFE){
+        int risposta;
+        printf("  \t\t\t\t~ ~ LIVELLO 3 ~ ~\n\n");
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\tfor(i = 0; i < 15; i++){\n");
+        printf("  \t\t\t\t   printf(\" scrivi un numero %%d:\", i + 1);\n");
+        printf("  \t\t\t\t   scanf(\"%%d\", &serie[i]);\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\t   (i = 0; i < 15; i++){\n");
+        printf("  \t\t\t\t   somma += serie[i];\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\tA)scanf\n");//c
+        printf("  \t\t\t\tB)printf\n");
+        printf("  \t\t\t\tC)for\n");
+        risposta = Scelta();
+        if(risposta != 3){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else
+        {
+        printf("\n  \t\t\t\tCorretto!\n\n");
+        }
+    
+        checklife(*LIFE);
+        
+    }while (risposta != 3);
+
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\tchar a;\n");
+        printf("  \t\t\t\tprintf(\"codice ascii di una letere\");\n");
+        printf("  \t\t\t\tprintf(\"scrivi un caratere:\");\n");
+        printf("  \t\t\t\tscanf(\"%%c\", a);\n");
+        printf("  \t\t\t\tprintf(\"ecco il valore in ascii: %%d\", a);\n");
+        printf("  \t\t\t\tA);\n");
+        printf("  \t\t\t\tB),\n");
+        printf("  \t\t\t\tC)&\n");//c
+        risposta = Scelta();
+        if(risposta != 3){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else
+        {
+        printf("\n  \t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+    
+    }while(risposta != 3);
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\tdo {\n");
+        printf("  \t\t\t\t    printf(\"Inserisci il valore %%d: \", indice + 1);\n");
+        printf("  \t\t\t\t    scanf(\"%%d\", array[indice]);\n");
+        printf("  \t\t\t\t    indice++;\n");
+        printf("  \t\t\t\t}while (indice < 10 && array[indice - 1] != -1);\n");
+        printf("  \t\t\t\tA);\n");
+        printf("  \t\t\t\tB),\n");
+        printf("  \t\t\t\tC)&\n");//c
+        risposta= Scelta();
+        if(risposta != 3){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else
+        {
+        printf("\n  \t\t\t\tCorretto!\n\n");
+        }
+    
+        checklife(*LIFE);
+   
+    }while(risposta != 3);
+
+    system("cls");
+
+    lvl_4(LIFE);
+}
+void lvl_4(int *LIFE){
+        printf("  \t\t\t\t~ ~ LIVELLO 4 ~ ~ \n\n");
+        int risposta;
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\tfor(i = 0; i < 15; i++){\n");
+        printf("  \t\t\t\t    printf(\" scrivi un numero %%d:\", i + 1);\n");
+        printf("  \t\t\t\t    scanf(\"%%d\", &serie[i]);\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\t(i = 0; i < 15; i++){\n");
+        printf("  \t\t\t\t    somma += serie[i];\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\tA)scanf\n");//c
+        printf("  \t\t\t\tB)printf\n");
+        printf("  \t\t\t\tC)for\n");
+        risposta = Scelta();
+        if(risposta != 3){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+        checklife(*LIFE);
+        
+    }while (risposta != 3);
+
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\tint palindromo(char parola[]){\n");
+        printf("  \t\t\t\t    int l = strlen(parola);\n");
+        printf("  \t\t\t\t    for(int i=0; i</2; i++){\n");
+        printf("  \t\t\t\t        if(parola[i]!=parola[l-1-i]){\n");
+        printf("  \t\t\t\t           return 0;\n");
+        printf("  \t\t\t\t         }\n");
+        printf("  \t\t\t\t     }\n");
+        printf("  \t\t\t\t     return 1;\n}");
+        printf("  \t\t\t\tA);\n");//b
+        printf("  \t\t\t\tB)l\n");
+        printf("  \t\t\t\tC)i++\n");
+        risposta= Scelta();
+        if(risposta != 2){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+        checklife(*LIFE);
+    
+    }while(risposta != 2);
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+        printf("  \t\t\t\tcosa manca?");
+        printf("  \t\t\t\tint filtro(char a){\n");
+        printf("  \t\t\t\tif((a>=A && a<=Z)){\n");
+        printf("  \t\t\t\t   printf(\"e' una letera maiuscola \");\n");
+        printf("  \t\t\t\t   return 1;\n");
+        printf("  \t\t\t\t   }else if((a>=a && a<=z)){\n");
+        printf("  \t\t\t\t    printf(\"e' una letera minuscola \");\n");
+        printf("  \t\t\t\t    return 0;\n");
+        printf("  \t\t\t\t    }else{\n");
+        printf("  \t\t\t\t    printf(\"non e' una letera\");\n");
+        printf("  \t\t\t\t    return -1;\n");
+        printf("  \t\t\t\t    }\n");
+        printf("   \t\t\t\t   }\n");
+        printf("  \t\t\t\tA)''\n");//a
+        printf("  \t\t\t\tB))\n");
+        printf("  \t\t\t\tC);\n");
+        risposta= Scelta();
+        if(risposta != 1){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+
+        checklife(*LIFE);
+    
+    }while(risposta!=1);
+
+    system("cls");
+
+    lvl_5(LIFE);
+    
+}
+void lvl_5(int *LIFE){
+     printf("  \t\t\t\t~ ~ LIVELLO 5 ~ ~ \n\n");
+      int risposta;
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+        printf("  \t\t\t\tcosa manca?\n}");
+        printf("  \t\t\t\t#include<stdio.h>\n");
+        printf("  \t\t\t\ttypedef struct{ \n");
+        printf("  \t\t\t\t   char via[30];\n");
+        printf("  \t\t\t\t   char citta[30];\n");
+        printf("  \t\t\t\t   int CAP[100];\n");
+        printf("  \t\t\t\t}Indirizo;\n");
+        printf("  \t\t\t\ttypedef struct {\n");
+        printf("  \t\t\t\t   char nome[30];\n");
+        printf("  \t\t\t\t   char cognome[30];\n");
+        printf("  \t\t\t\t   int eta;\n");
+        printf("  \t\t\t\t   Indirizo indirizoresidente;\n");
+        printf("  \t\t\t\t}Persona;\n");
+        printf("  \t\t\t\tint main(){\n");
+        printf("  \t\t\t\tPersona persona1;\n");
+        printf("  \t\t\t\tprintf(\"scrivi il nome\");\n");
+        printf("  \t\t\t\tscanf(\"%%s\", persona1nome);\n");
+        printf("  \t\t\t\tprintf(\"scrivi il cognome\");\n");
+        printf("  \t\t\t\tscanf(\"%%s\", persona1cognome);\n");
+        printf("  \t\t\t\tprintf(\"scrivi eta\");\n");
+        printf("  \t\t\t\tscanf(\"%%d\", &persona1eta);\n");
+        printf("  \t\t\t\tprintf(\"scrivi la residenza (via, cita, CAP)\");\n");
+        printf("  \t\t\t\tscanf(\"%%s %%s %%d\", persona1.indirizoresidente.via, persona1.indirizoresidente.citta, &persona1.indirizoresidente.CAP);\n");
+        printf("  \t\t\t\tgetchar();\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\tA)return 0;\n");//b
+        printf("  \t\t\t\tB).\n");
+        printf("  \t\t\t\tC);\n");
+        risposta = Scelta();
+        if(risposta != 2){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+        
+        checklife(*LIFE);
+        
+    }while (risposta != 2);
+
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\t#include<stdio.h>\n\n");
+        printf("  \t\t\t\tint main(){\n");
+        printf("  \t\t\t\tint n1=0;\n");
+        printf("  \t\t\t\tint n2=0;\n");
+        printf("  \t\t\t\tint n3=0;\n");
+        printf("  \t\t\t\tprintf(\"scrivi un valore =\", n1);\n");
+        printf("  \t\t\t\tscanf(\"%%d\", &n1);\n");
+        printf("  \t\t\t\tprintf(\"scrivi un valore =\", n2);\n");
+        printf("  \t\t\t\tscanf(\"%%d\", &n2);\n");
+        printf("  \t\t\t\tn3 = somma(n1,n2);\n");
+        printf("  \t\t\t\tprintf(\"risultato=%%d\", n3);\n");
+        printf("  \t\t\t\treturn 0;\n");
+        printf("  \t\t\t\t}\n");
+        printf("  \t\t\t\tint somma(int a, int b){\n");
+        printf("  \t\t\t\tint tottale=0;\n");
+        printf("  \t\t\t\ttottale = a + b;\n");
+        printf("  \t\t\t\treturn tottale;\n");
+        printf("  \t\t\t\t}\n");
+
+        printf("  \t\t\t\tA)int somma(int a, int b);\n");//a
+        printf("  \t\t\t\tB)somma(n1,n2)\n");
+        printf("  \t\t\t\tC)getchar();\n");
+        risposta = Scelta();
+        if(risposta != 1){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+    
+        checklife(*LIFE);
+    
+    }while(risposta != 1);
+    
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+        printf("  \t\t\t\tcosa manca?\n");
+        printf("  \t\t\t\t#include<stdio.h>\n");
+        printf("  \t\t\t\t#include<string.h>\n");
+        printf("  \t\t\t\tint main (){\n");
+        printf("   \t\t\t\tint a = 5;\n");
+        printf("  \t\t\t\t char b = 'c';\n");
+        printf("  \t\t\t\t int *p1;\n");
+        printf("  \t\t\t\t char *p2;\n");
+        printf("  \t\t\t\t p1 = &a;\n");
+        printf("  \t\t\t\t p2 = &b;\n");
+        printf("  \t\t\t\t printf(\"indirizo di due variabili %%p, %%p\", p1,p2);\n");
+        printf("  \t\t\t\t printf(\"il valore delle celle di memoria %%d, %%c\", p1, p2);\n");
+        printf("  \t\t\t\t *p1 = 18;\n");
+        printf("  \t\t\t\t *p2 = 'a';\n");
+        printf("   \t\t\t\tprintf(\"indirizo di due variabili %%p, %%p\", p1, p2);\n");
+        printf("  \t\t\t\t printf(\"il valore delle celle di memoria %%d, %%c\", *p1, *p2);\n");
+        printf("  \t\t\t\t return 0;\n");
+        printf("  \t\t\t\t}\n"); 
+
+        printf("  \t\t\t\tA)%%d\n");//c
+        printf("  \t\t\t\tB)%%p\n");
+        printf("  \t\t\t\tC)*\n");
+        risposta = Scelta();
+        if(risposta != 3){
+            (*LIFE)--;
+            printf("\n  \t\t\t\tRisposta sbagliata! \n \t\t\t\t Hai perso una vita! \n \t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else
+            {
+                printf("\n  \t\t\t\tCorretto!\n\n");
+            }
+    
+        checklife(*LIFE);
+    
+    }while(risposta != 3);
+
+    system("cls");
+    lvl_6(LIFE);
+    
+}
+void lvl_6(int *LIFE){
+    char vero[] = "printf";
+    char vero2[] = ";";
+    char vero1 []="&";
+    char scrivi[max];
+    printf("  \t\t\t\t~ ~ LIVELLO 6 ~ ~ \n\n");
+    
+do {
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+    printf("\t\t\t\t\tscrivi cosa manca per far stampare a schermo\n");
+    printf("\t\t\t\t\t(\"franco bibi\");\n");//printf")
+    printf("\t\t\t\t\trisposta:");
+    scanf("\t\t\t\t\t%s", scrivi);
+    int len = strlen(scrivi);
+    if (scrivi[len - 1] == '\n')
+        scrivi[len - 1] = '\0';
+    while (getchar() != '\n');
+    
+    if (strcmp(scrivi, vero) != 0){
+        (*LIFE)--;
+        printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\n\t\t\t\t\tCorretto!\n\n");
+    } 
+    checklife(*LIFE);
+} while (strcmp(scrivi, vero) != 0);
+    memset(scrivi, '\0', max);
+    
+    
+do{
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+    printf("\t\t\t\t\tscrivi cosa manca per far scrivere da tastiera");
+    printf("\n\t\t\t\t\tscanf(\"%%d\", num);\n");//&
+    printf("\t\t\t\t\trisposta:");
+    scanf("\t\t\t\t\t%s", scrivi);
+    int len = strlen(scrivi);
+    if (scrivi[len - 1] == '\n')
+        scrivi[len - 1] = '\0';
+    while (getchar() != '\n');
+    if (strcmp(scrivi, vero1) != 0){
+        (*LIFE)--;
+        printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\n\t\t\t\t\tCorretto!\n\n");
+    } 
+    checklife(*LIFE);
+}while(strcmp(scrivi,vero1)!=0);
+    memset(scrivi, '\0', max);
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+    printf("\t\t\t\t\tscrivi cosa manca, in ordine");//;,&,printf,
+    printf("\n\t\t\t\t\tprintf(\"scrivi un numero\")\n");
+    printf("\t\t\t\t\tscanf(\"%%d\", num);\n");
+    printf("\t\t\t\t\t(il numero scritto :%%d\", num) \");\n");
+    do{
+    printf("\t\t\t\t\t1:");
+    scanf("\t\t\t\t\t%s", scrivi);
+    int len = strlen(scrivi);
+    if (scrivi[len - 1] == '\n')
+        scrivi[len - 1] = '\0';
+    while (getchar() != '\n');
+    if(strcmp(scrivi, vero2)!=0){
+        (*LIFE)--;
+        printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\n\t\t\t\t\tCorretto!\n\n");
+    } 
+    checklife(*LIFE);
+    }while(strcmp(scrivi, vero2)!=0);
+    memset(scrivi, '\0', max);
+    do{
+    printf("\t\t\t\t\t2:");
+    scanf("\t\t\t\t\t%s", scrivi);
+    if(strcmp(scrivi, vero1)!=0){
+        (*LIFE)--;
+        printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\n\t\t\t\t\tCorretto!\n\n");
+    } 
+    checklife(*LIFE);
+    }while(strcmp(scrivi, vero1)!=0);
+    memset(scrivi, '\0', max);
+    do{
+        printf("\t\t\t\t\t3:");
+    scanf("\t\t\t\t\t%s", scrivi);    
+    if(strcmp(scrivi, vero)!=0){
+        (*LIFE)--;
+        printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+    }else
+    {
+        printf("\n\t\t\t\t\tCorretto!\n\n");
+    } 
+    checklife(*LIFE);
+    }while(strcmp(scrivi, vero)!=0);
+    memset(scrivi, '\0', max);
+    system("cls");
+    lvl_7(LIFE);
+}
+void lvl_7( int *LIFE)
+{
+     printf("  \t\t\t\t~ ~ LIVELLO 7 ~ ~ \n\n");
+    char Scelta[max];
+    char vero[] = "for";
+    char vero2[]= "i";
+    char vero3[] = "while";
+    char vero1[]= "+";
+    char vero4[] = "somma";
+    char vero5[]= "&";
+    char vero6[] = "scanf";
+
+        do
+        {
+            printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+            printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");
+            printf("\t\t\t\t\tint n=0;\n\t\t\t\t\t (int i = 0; i <= 10; i++){\n\t\t\t\t\tprintf(\"%%d\", );\n\t\t\t\t\t}\n");//for,i
+            printf("\t\t\t\t\t1:");
+            scanf("%s", Scelta);
+         int len = strlen(Scelta);
+
+             if (Scelta[len - 1] == '\n')
+                {
+                    Scelta[len - 1] = '\0';
+                }
+                while(getchar() != '\n');
+
+             if(strcmp(Scelta, vero)!=0)
+                {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+
+        }while(strcmp(Scelta, vero)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero2)!=0)
+            {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero2)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+  
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+        printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");
+        printf("\t\t\t\t\t(numero <= 10){\n\t\t\t\t\tprintf(\"%%d\", numero);\n\t\t\t\t\tnumero+;\n\t\t\t\t\t}\n");//while,+
+
+        printf("\t\t\t\t\t1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero3)!=0)
+                {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero3)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while(getchar() != '\n');
+
+        if(strcmp(Scelta, vero1)!=0)
+            {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero1)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+    
+
+    do
+    {
+        printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+        printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//somma,&,scanf,;
+        printf("\t\t\t\t\tint a, b, ;\n\t\t\t\t\tsomma= a+b;\n\t\t\t\t\tprintf(\"a =\");\n\t\t\t\t\tscanf(\"%%d\", a);\n\t\t\t\t\tprintf(\"b =\");\n\t\t\t\t\t(\"%%d\", &b);\n\t\t\t\t\tprintf( \"somma = %%d\" , somma);\n");
+        printf("\t\t\t\t\t1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while(getchar() != '\n');
+
+        if(strcmp(Scelta, vero4)!=0)
+            {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero4)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while(getchar() != '\n');
+
+        if(strcmp(Scelta, vero5)!=0)
+            {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero5)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    do
+    {
+        printf("\t\t\t\t\t3:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero6)!=0)
+            {
+                    (*LIFE)--;
+                    printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                }else{
+                    printf("\n\t\t\t\t\tCorretto!\n\n");
+                }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero6)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    system("cls");
+    lvl_8(LIFE);
+    
+}
+void lvl_8(int *LIFE){
+    char vero[]= "i++";
+    char vero1[] = ";";
+    char vero2[] = "printf";
+    char vero3[]= "=";
+    char vero4[] = ",";
+    char vero5[]= ";";
+    char vero6[] = "for";
+    char vero7[]= "i";
+
+    char Scelta[max];
+    printf("  \t\t\t\t~ ~ LIVELLO 8 ~ ~ \n\n");
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+    do
+    {
+        printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//i++,printf,;
+        printf("\t\t\t\t\tint vet[10];\n\t\t\t\t\tfor(int i=0;i<n;){\n\t\t\t\t\t(\"scrivi i valori %%d :\", i + 1);\n\t\t\t\t\tscanf(\"%%d\", &vet[i]);\n\t\t\t\t\tint primo = 1\n\t\t\t\t\tfor(j=vet[i]-1; j>1; j--){\n\t\t\t\t\tif(vet[i]%%j==0){\n\t\t\t\t\tprimo = 0;\n\t\t\t\t\t}\");\n");
+        
+        printf("\t\t\t\t\t1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+        if(strcmp(Scelta, vero)!=0)
+            {
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
+            }
+            checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero2)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero2)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    do
+    {
+        printf("\t\t\t\t\t3:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+        {
+            Scelta[len - 1] = '\0';
+        }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero1)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+    }while(strcmp(Scelta, vero1)!=0);
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+    do
+    {
+        printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//=,",",;
+        printf("\t\t\t\t\tif(primo = 1){\n\t\t\t\t\tprintf(\"numero primo\" j);\n\t\t\t\t\t} else {\n\t\t\t\t\tprintf(\"numero non primo\", j)\n\t\t\t\t\t}\n");
+        printf("\t\t\t\t\t1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero3)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+    }while(strcmp(Scelta, vero3)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero4)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero4)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    do
+    {
+        printf("\t\t\t\t\t3:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero5)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+            checklife(*LIFE);
+    
+    }while(strcmp(Scelta, vero5)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");
+    do
+    {
+        
+        printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//for,i++,",",i
+        printf("\t\t\t\t\t(int i = 0; i < 10; ){\n\t\t\t\t\tprintf(\"scrivi un valore %%d:\" i + 1);\n\t\t\t\t\tscanf(\"%%d\", &sequenza[]);\n\t\t\t\t\t}\n");
+        printf("\t\t\t\t\t1:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero6)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+            checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero6)!=0);
+
+    memset(Scelta, '\0', max);
+
+    do
+    {
+        printf("\t\t\t\t\t2:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+            checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+
+    do
+    {
+        printf("\t\t\t\t\t3:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+        {
+            Scelta[len - 1] = '\0';
+        }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero4)!=0)
+        {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero4)!=0);
+
+    do
+    {
+        printf("\t\t\t\t\t4:");
+        scanf("%s", Scelta);
+        int len = strlen(Scelta);
+
+        if (Scelta[len - 1] == '\n')
+            {
+                Scelta[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelta, vero7)!=0)
+            {
+            (*LIFE)--;
+            printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+        }else{
+            printf("\n\t\t\t\t\tCorretto!\n\n");
+        }
+        checklife(*LIFE);
+
+    }while(strcmp(Scelta, vero7)!=0);
+
+    memset(Scelta, '\0', max); //RESET ARRAY
+    system("cls");
+    END(*LIFE);
+}
+void GAMEOVER(int LIFE){
+    printf("\n");
+    printf("  \t\t\t\tGGGGGGG   AAAAAA  MMM MMM   EEEEEEE    OOOOO   VV     VV  EEEEEEE  RRRRRR \t \t \n");
+    printf("  \t\t\t\tG         A    A  MM M MM   E         O     O   VV   VV   E        R     R\t \t  \n");
+    printf("  \t\t\t\tG   GGG   AAAAAA  MM M MM   EEEEE     O     O    VV VV    EEEEE    RRRRRR\t \t   \n");
+    printf("  \t\t\t\tG     G   A    A  MM   MM   E         O     O     VVV     E        R   RR\t \t   \n");
+    printf("  \t\t\t\tGGGGGGG   A    A  MM   MM   EEEEEEE    OOOOO       V      EEEEEEE  R     R\t \t  \n");
+    printf("\n");
+    ripeti(&LIFE);
+}
+void END(int LIFE){
+    printf("  \t\t\t\t\t\t\tEEEEEEE   NN     NN   DDDDDD\t\t\t   \n");
+    printf("  \t\t\t\t\t\t\tE         NNN    NN   D     DD\t\t\t \n");
+    printf("  \t\t\t\t\t\t\tEEEEE     NNNN   NN   D      DD\t\t\t\n");
+    printf("  \t\t\t\t\t\t\tE         NN NN  NN   D     DD\t\t\t \n");
+    printf("  \t\t\t\t\t\t\tEEEEEEE   NN  NN NN   DDDDDD\t\t\t   \n");
+    ripeti(&LIFE);
+}
+void ripeti(int *LIFE){
+    char scelta;
+    
+    while (1) {
+        printf("  \t\t\t\tVuoi riprovare? (y/n): ");
+        scanf(" %c", &scelta);
+        switch (scelta) {
+            case 'y':
+            case 'Y':
+                *LIFE=3;
+                lvl_1(LIFE);
+                break; 
+            case 'n':
+            case 'N':
+                exit(0);
+            default:
+                printf("Scelta non valida. Riprova.\n");
+                break;
+        }        
+    }
+}
