@@ -1,4 +1,30 @@
-void lvl__9(int *LIFE){
+#include<stdio.h>
+#include <string.h>
+#include <windows.h>
+#include <stdlib.h>
+
+#define max 100
+
+void setColor(int textColor, int bgColor) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
+}
+void GAMEOVER();
+void lvl_9(int *LIFE);
+void checklife(int LIFE)
+{
+ if (LIFE == 0) 
+        {
+            GAMEOVER();
+        }
+}
+int main(){
+    int LIFE=3;
+    lvl_9(&LIFE);
+    return 0;
+}
+void lvl_9(int *LIFE){
+    printf("  \t\t\t\t~ ~ LIVELLO 9 ~ ~ \n\n");
     char vero[]= "i++";
     char vero1[] = "&";
     char vero2[] = ";";
@@ -9,12 +35,30 @@ void lvl__9(int *LIFE){
     char vero7[]= "i";
     char Scelta[max];
 
-    printf("scrivi cosa manca\n");
+    setColor(3, 0);
+    printf("\n\t\t\t\t\t -- DOMANDA NUMERO 1 -- \n");
+    printf("\n\t\t\t\t\tscrivi cosa manca, in ordine\n");
    //i++,&,;
-    printf("void aggiungi(Clienti *c, int *f){\nif(*f<50){\nint b=0;\ndo {\nprintf(\"scrivi quante prenotazioni vuoi aggiungere:\");\nscanf(\"%%d\", &b);\n}while(b<=0);\nfor(int i=0; i<b; ){\nprintf(\"scrivi il nome:\");\nscanf(\"%%99s\",  c[*f].nome);\nprintf(\"scrivi il numero di persone:\");\nscanf(\"%%d\", c[*f].npersone);\nprintf(\"scrivi il numero del tavolo:\")\nscanf(\"%%d\", &c[*f].tavolo);\nprintf(\"scrivi l'ora(ora):\");\nscanf(\"%%d\", &c[*f].data.ora);\nprintf(\"scrivi l'ora(minuti):\");\nscanf(\"%%d\", &c[*f].data.minuti);\n(*f)++;\n}\n}else{\nprintf(\"ristorante pieno\");\n}\nkill();\n}\n");
+   setColor(2, 0);
+    printf("\n\t\t\t\tvoid aggiungi(Clienti *c, int *f){\n");
+    printf("\t\t\t\tif(*f<50){\n");
+    printf("\t\t\t\t\t int b=0;\n");        
+    printf("\t\t\t\t   do {\n");
+    printf("\t\t\t\t   printf(\"scrivi quante prenotazioni vuoi aggiungere:\");\n");
+    printf("\t\t\t\t   scanf(\"%%d\", &b);\n");
+    printf("\t\t\t\t   }while(b<=0);\n");
+    printf("\t\t\t\tfor(int i=0; i<b; ){\n");
+    printf("\t\t\t\t   printf(\"scrivi il nome:\");\n");
+    printf("\t\t\t\t   scanf(\"%%99s\",  c[*f].nome);\n");
+    printf("\t\t\t\t   printf(\"scrivi il numero di persone:\");\n");
+    printf("\t\t\t\t   scanf(\"%%d\", c[*f].npersone);\n");
+    printf("\t\t\t\t   printf(\"scrivi il numero del tavolo:\");\n");
+    printf("\t\t\t\t   scanf(\"%%d\", &c[*f].tavolo)\n");
+    printf("\t\t\t\t   (*f)++;");
+    printf(" \t\t\t\t}\n\t\t\t\t}else{\n\t\t\t\tprintf(\"ristorante pieno\");\n\t\t\t\t}\n\t\t\t\t}\n");
     do
     {
-        printf("1:");
+        printf("\n\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -28,12 +72,14 @@ void lvl__9(int *LIFE){
         if(strcmp(Scelta, vero)!=0)
             {
                 (*LIFE)--;
+                
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-        if(*LIFE==0)
-        {
-            return;
-        }
+            
+            checklife(*LIFE);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -41,7 +87,7 @@ void lvl__9(int *LIFE){
 
     do
     {
-        printf("2:");
+        printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -54,10 +100,12 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero1)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-        
-        checklife(*LIFE);
+            checklife(*LIFE);
     
     }while(strcmp(Scelta, vero1)!=0);
 
@@ -65,7 +113,7 @@ void lvl__9(int *LIFE){
 
     do
     {
-        printf("3:");
+        printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -78,20 +126,31 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero2)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-    checklife(*LIFE);
+            checklife(*LIFE);
     
     }while(strcmp(Scelta, vero2)!=0);
 
     memset(Scelta, '\0', max); //RESET ARRAY
+    setColor(3, 0);
+    printf("\n \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
+    printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//i++,if,i,;
+    setColor(2, 0);
 
-    printf("scrivi cosa manca \n");//i++,if,i,;
-    printf("void stampa(Clienti *c, int f){\nfor(int i=0; i<f; ){\nprintf(\"%%d) nome:%%s numero persone:%%d numero del tavolo:%%d orario:%%d:%%d\", \ni+1,c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n}\n}\nvoid ricerca( Clienti *c, int f){\nint MAX = 0;\nint j = 0;\nfor(int i=0; i < f; i++){\n\n(MAX < c[].npersone){\nMAX=c[].npersone;\nj=i;\n}\n}\ntroll();\nprintf(\"nome:%%s numero di persone:%%d numero del tavolo:%%d\", c[j].nome, c[j].npersone, c[j].tavolo);\n}\n");
+    printf("\n\t\t\t\tvoid stampa(Clienti *c, int f){\n");
+    printf("\t\t\t\t   for(int i=0; i<f; ){\n");
+    printf("\t\t\t\t       printf(\"%%d) nome:%%s numero persone:%%d numero del tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1,c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t  }\n\t\t\t\t  }\n");
+    printf("\t\t\t\t      int MAX = 0;\n");
+    printf("\t\t\t\t      int j = 0;\n");
+    printf("\t\t\t\t   for(int i=0; i < f; i++){\n\t\t\t\t  (MAX < c[].npersone){\n  \t\t\t\tMAX=c[].npersone;\t\t\t\t\n");
+    printf("\t\t\t\tvoid ricerca( Clienti *c, int f){\n \t\t\t\tj=i;\n \t\t\t\t}\n \t\t\t\t}\n \t\t\t\tprintf(\"nome:%%s numero di persone:%%d numero del tavolo:%%d\", c[j].nome, c[j].npersone, c[j].tavolo);\n}\n");
     do
     {
-        printf("1:");
+        printf("\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -105,12 +164,11 @@ void lvl__9(int *LIFE){
         if(strcmp(Scelta, vero)!=0)
             {
                 (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-        if(*LIFE==0)
-        {
-            return;
-        }
+            checklife(*LIFE);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -118,7 +176,7 @@ void lvl__9(int *LIFE){
 
     do
     {
-        printf("2:");
+        printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -131,10 +189,12 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero3)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-        
-        checklife(*LIFE);
+            checklife(*LIFE);
     
     }while(strcmp(Scelta, vero3)!=0);
 
@@ -142,7 +202,7 @@ void lvl__9(int *LIFE){
 
     do
     {
-        printf("3:");
+        printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -155,21 +215,24 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero7)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-    checklife(*LIFE);
-    
+            checklife(*LIFE);
     }while(strcmp(Scelta, vero7)!=0);
 
     memset(Scelta, '\0', max); //RESET ARRAY
+    setColor(3, 0);
+    printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");//a
 
-    printf("scrivi cosa manca\n");//for,*file,fclose(file),;
-    printf("(int i = 0; i < 10; ){\nvoid ordinamento(Clienti *c, int f){\n\nfor(int i=0; i<f-1; i++){\n(int j=0; j<f-i-1; j++){\nif(c[j].data.ora < c[j+1].data.ora){\nClienti max=c[j+1];\nc[j+1]=c[j];\nc[j]=max;\n}\nif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\nClienti max=c[j+1];\nc[j+1]=c[j];\nc[j]=max;\n}\n}\n\n}\n}\nvoid file(Clienti *c, int f){\n\nFILE =fopen(\"prenotazioni.txt\", \"w\");\nif(file==NULL){\nprintf(\"ERROR\");\n}else{\nprintf(\"file aperto con succeso\n\");\n}\n\nfprintf(file, \"numero prenotazioni %d\", f);\nfor(int i=0; i<f; i++){\n\nfprintf(file, \"%d) nome:%s numero persone:%d numero tavolo:%d orario:%d:%d\", i+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n}\nstampa_fregato_in_loop();\n\nprintf(\"\nfile salvato\");\n}\n");
-    printf("1:");
+    printf("\n\t\t\t\t\tscrivi cosa manca, in ordine\n\n");//for,*file,fclose(file),;
+    setColor(2, 0);
+    printf("\t\t\t\t void ordinamento(Clienti *c, int f){\n\t\t\t\t for(int i=0; i<f-1; i++){\n\t\t\t\t  (int j=0; j<f-i-1; j++){\n\t\t\t\t   if(c[j].data.ora < c[j+1].data.ora){\n\t\t\t\t  Clienti max=c[j+1];\n\t\t\t\t  c[j+1]=c[j];\n\t\t\t\t  c[j]=max;\n\t\t\t\t   }\n\t\t\t\tif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\n\t\t\t\tClienti max=c[j+1];\n\t\t\t\tc[j+1]=c[j];\n\t\t\t\tc[j]=max;\n\t\t\t\t  }\n\t\t\t\t }\n\t\t\t\t }\n\t\t\t\t}\n\t\t\t\tvoid file(Clienti *c, int f){\n\t\t\t\tFILE =fopen(\"prenotazioni.txt\", \"w\");\n\t\t\t\tif(file==NULL){\n\t\t\t\tprintf(\"ERROR\");\n\t\t\t\t}else{\n\t\t\t\tprintf(\"file aperto con succeso\");\n\t\t\t\t}\n\t\t\t\tfprintf(file, \"numero prenotazioni %%d\", f);\n\t\t\t\tfor(int i=0; i<f; i++){\n\t\t\t\tfprintf(file, \"%%d) nome:%%s numero persone:%%d numero tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t}\\n\n\t\t\t\tprintf(\"file salvato\");\n\t\t\t\t}\n");
     do
     {
-        printf("1:");
+        printf("\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -183,20 +246,19 @@ void lvl__9(int *LIFE){
         if(strcmp(Scelta, vero6)!=0)
             {
                 (*LIFE)--;
+                
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-        if(*LIFE==0)
-        {
-            return;
-        }
-
+            checklife(*LIFE);
     }while(strcmp(Scelta, vero6)!=0);
 
     memset(Scelta, '\0', max);
 
     do
     {
-        printf("2:");
+        printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -209,18 +271,19 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero4)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-        
-        checklife(*LIFE);
-    
+            checklife(*LIFE);
     }while(strcmp(Scelta, vero4)!=0);
 
     memset(Scelta, '\0', max); //RESET ARRAY
 
     do
     {
-        printf("3:");
+        printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -233,16 +296,17 @@ void lvl__9(int *LIFE){
 
         if(strcmp(Scelta, vero5)!=0)
             {
-                (*LIFE)--; 
+                (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-    checklife(*LIFE);
-    
+            checklife(*LIFE);
     }while(strcmp(Scelta, vero5)!=0);
 
     do
     {
-        printf("4:");
+        printf("\t\t\t\t4:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
 
@@ -256,12 +320,11 @@ void lvl__9(int *LIFE){
         if(strcmp(Scelta, vero2)!=0)
             {
                 (*LIFE)--;
+                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+            }else{
+                printf("\n\t\t\t\t\tCorretto!\n\n");
             }
-    
-        if(*LIFE==0)
-        {
-            return;
-        }
+            checklife(*LIFE);
 
     }while(strcmp(Scelta, vero2)!=0);
 
@@ -269,5 +332,17 @@ void lvl__9(int *LIFE){
 
 
     memset(Scelta, '\0', max); //RESET ARRAY
-    printf("BOSS");
+
+    system("cls");
+    END(*LIFE);
+}
+void GAMEOVER(){
+    printf("\n");
+    printf("  \t\t\t\tGGGGGGG   AAAAAA  MMM MMM   EEEEEEE    OOOOO   VV     VV  EEEEEEE  RRRRRR \t \t \n");
+    printf("  \t\t\t\tG         A    A  MM M MM   E         O     O   VV   VV   E        R     R\t \t  \n");
+    printf("  \t\t\t\tG   GGG   AAAAAA  MM M MM   EEEEE     O     O    VV VV    EEEEE    RRRRRR\t \t   \n");
+    printf("  \t\t\t\tG     G   A    A  MM   MM   E         O     O     VVV     E        R   RR\t \t   \n");
+    printf("  \t\t\t\tGGGGGGG   A    A  MM   MM   EEEEEEE    OOOOO       V      EEEEEEE  R     R\t \t  \n");
+    printf("\n");
+    exit(1);
 }
