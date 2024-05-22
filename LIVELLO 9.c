@@ -5,18 +5,29 @@
 
 #define max 100
 
-void setColor(int textColor, int bgColor) {
+void setColor(int textColor, int bgColor) 
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
 }
 void GAMEOVER();
 void lvl_9(int *LIFE);
+void printSlowly(const char *text, unsigned int delay);
+
 void checklife(int LIFE)
 {
  if (LIFE == 0) 
         {
             GAMEOVER();
         }
+}
+void printSlowly(const char *text, unsigned int delay) 
+{
+    while (*text) {
+        printf("%c", *text++);
+        fflush(stdout); 
+        usleep(delay); 
+    }
 }
 int main(){
     int LIFE=3;
@@ -36,26 +47,26 @@ void lvl_9(int *LIFE){
     char Scelta[max];
 
     setColor(3, 0);
-    printf("\n\t\t\t\t\t -- DOMANDA NUMERO 1 -- \n");
-    printf("\n\t\t\t\t\tscrivi cosa manca, in ordine\n");
+    printSlowly("\n\t\t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
+    printSlowly("\n\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);
    //i++,&,;
    setColor(2, 0);
-    printf("\n\t\t\t\tvoid aggiungi(Clienti *c, int *f){\n");
-    printf("\t\t\t\tif(*f<50){\n");
-    printf("\t\t\t\t\t int b=0;\n");        
-    printf("\t\t\t\t   do {\n");
-    printf("\t\t\t\t   printf(\"scrivi quante prenotazioni vuoi aggiungere:\");\n");
-    printf("\t\t\t\t   scanf(\"%%d\", &b);\n");
-    printf("\t\t\t\t   }while(b<=0);\n");
-    printf("\t\t\t\tfor(int i=0; i<b; ){\n");
-    printf("\t\t\t\t   printf(\"scrivi il nome:\");\n");
-    printf("\t\t\t\t   scanf(\"%%99s\",  c[*f].nome);\n");
-    printf("\t\t\t\t   printf(\"scrivi il numero di persone:\");\n");
-    printf("\t\t\t\t   scanf(\"%%d\", c[*f].npersone);\n");
-    printf("\t\t\t\t   printf(\"scrivi il numero del tavolo:\");\n");
-    printf("\t\t\t\t   scanf(\"%%d\", &c[*f].tavolo)\n");
-    printf("\t\t\t\t   (*f)++;");
-    printf(" \t\t\t\t}\n\t\t\t\t}else{\n\t\t\t\tprintf(\"ristorante pieno\");\n\t\t\t\t}\n\t\t\t\t}\n");
+    printSlowly("\n\t\t\t\tvoid aggiungi(Clienti *c, int *f){\n", DELAY);
+    printSlowly("\t\t\t\tif(*f<50){\n", DELAY);
+    printSlowly("\t\t\t\t\t int b=0;\n", DELAY);        
+    printSlowly("\t\t\t\t   do {\n", DELAY);
+    printSlowly("\t\t\t\t   printf(\"scrivi quante prenotazioni vuoi aggiungere:\");\n", DELAY);
+    printSlowly("\t\t\t\t   scanf(\"%%d\", &b);\n", DELAY);
+    printSlowly("\t\t\t\t   }while(b<=0);\n", DELAY);
+    printSlowly("\t\t\t\tfor(int i=0; i<b; ){\n", DELAY);
+    printSlowly("\t\t\t\t   printf(\"scrivi il nome:\");\n", DELAY);
+    printSlowly("\t\t\t\t   scanf(\"%%99s\",  c[*f].nome);\n", DELAY);
+    printSlowly("\t\t\t\t   printf(\"scrivi il numero di persone:\");\n", DELAY);
+    printSlowly("\t\t\t\t   scanf(\"%%d\", c[*f].npersone);\n", DELAY);
+    printSlowly("\t\t\t\t   printf(\"scrivi il numero del tavolo:\");\n", DELAY);
+    printSlowly("\t\t\t\t   scanf(\"%%d\", &c[*f].tavolo)\n", DELAY);
+    printSlowly("\t\t\t\t   (*f)++;", DELAY);
+    printSlowly(" \t\t\t\t}\n\t\t\t\t}else{\n\t\t\t\tprintf(\"ristorante pieno\");\n\t\t\t\t}\n\t\t\t\t}\n", DELAY);
     do
     {
         printf("\n\t\t\t\t1:");
@@ -73,10 +84,12 @@ void lvl_9(int *LIFE){
             {
                 (*LIFE)--;
                 
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+               char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
                 
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             
             checklife(*LIFE);
@@ -101,9 +114,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero1)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
@@ -127,9 +143,11 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero2)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
@@ -137,17 +155,17 @@ void lvl_9(int *LIFE){
 
     memset(Scelta, '\0', max); //RESET ARRAY
     setColor(3, 0);
-    printf("\n \t\t\t\t -- DOMANDA NUMERO 2 -- \n");
-    printf("\t\t\t\t\tscrivi cosa manca, in ordine\n");//i++,if,i,;
+    printSlowly("\n \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
+    printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);//i++,if,i,;
     setColor(2, 0);
 
-    printf("\n\t\t\t\tvoid stampa(Clienti *c, int f){\n");
-    printf("\t\t\t\t   for(int i=0; i<f; ){\n");
-    printf("\t\t\t\t       printf(\"%%d) nome:%%s numero persone:%%d numero del tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1,c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t  }\n\t\t\t\t  }\n");
-    printf("\t\t\t\t      int MAX = 0;\n");
-    printf("\t\t\t\t      int j = 0;\n");
-    printf("\t\t\t\t   for(int i=0; i < f; i++){\n\t\t\t\t  (MAX < c[].npersone){\n  \t\t\t\tMAX=c[].npersone;\t\t\t\t\n");
-    printf("\t\t\t\tvoid ricerca( Clienti *c, int f){\n \t\t\t\tj=i;\n \t\t\t\t}\n \t\t\t\t}\n \t\t\t\tprintf(\"nome:%%s numero di persone:%%d numero del tavolo:%%d\", c[j].nome, c[j].npersone, c[j].tavolo);\n}\n");
+    printSlowly("\n\t\t\t\tvoid stampa(Clienti *c, int f){\n", DELAY);
+    printSlowly("\t\t\t\t   for(int i=0; i<f; ){\n", DELAY);
+    printSlowly("\t\t\t\t       printf(\"%%d) nome:%%s numero persone:%%d numero del tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1,c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t  }\n\t\t\t\t  }\n", DELAY);
+    printSlowly("\t\t\t\t      int MAX = 0;\n", DELAY);
+    printSlowly("\t\t\t\t      int j = 0;\n", DELAY);
+    printSlowly("\t\t\t\t   for(int i=0; i < f; i++){\n\t\t\t\t  (MAX < c[].npersone){\n  \t\t\t\tMAX=c[].npersone;\t\t\t\t\n", DELAY);
+    printSlowly("\t\t\t\tvoid ricerca( Clienti *c, int f){\n \t\t\t\tj=i;\n \t\t\t\t}\n \t\t\t\t}\n \t\t\t\tprintf(\"nome:%%s numero di persone:%%d numero del tavolo:%%d\", c[j].nome, c[j].npersone, c[j].tavolo);\n}\n", DELAY);
     do
     {
         printf("\t\t\t\t1:");
@@ -164,9 +182,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+                
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
@@ -190,9 +211,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero3)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
@@ -216,20 +240,23 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero7)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero7)!=0);
 
     memset(Scelta, '\0', max); //RESET ARRAY
     setColor(3, 0);
-    printf("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n");//a
+    printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);//a
 
-    printf("\n\t\t\t\t\tscrivi cosa manca, in ordine\n\n");//for,*file,fclose(file),;
+    printSlowly("\n\t\t\t\t\tscrivi cosa manca, in ordine\n\n", DELAY);//for,*file,fclose(file),;
     setColor(2, 0);
-    printf("\t\t\t\t void ordinamento(Clienti *c, int f){\n\t\t\t\t for(int i=0; i<f-1; i++){\n\t\t\t\t  (int j=0; j<f-i-1; j++){\n\t\t\t\t   if(c[j].data.ora < c[j+1].data.ora){\n\t\t\t\t  Clienti max=c[j+1];\n\t\t\t\t  c[j+1]=c[j];\n\t\t\t\t  c[j]=max;\n\t\t\t\t   }\n\t\t\t\tif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\n\t\t\t\tClienti max=c[j+1];\n\t\t\t\tc[j+1]=c[j];\n\t\t\t\tc[j]=max;\n\t\t\t\t  }\n\t\t\t\t }\n\t\t\t\t }\n\t\t\t\t}\n\t\t\t\tvoid file(Clienti *c, int f){\n\t\t\t\tFILE =fopen(\"prenotazioni.txt\", \"w\");\n\t\t\t\tif(file==NULL){\n\t\t\t\tprintf(\"ERROR\");\n\t\t\t\t}else{\n\t\t\t\tprintf(\"file aperto con succeso\");\n\t\t\t\t}\n\t\t\t\tfprintf(file, \"numero prenotazioni %%d\", f);\n\t\t\t\tfor(int i=0; i<f; i++){\n\t\t\t\tfprintf(file, \"%%d) nome:%%s numero persone:%%d numero tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t}\\n\n\t\t\t\tprintf(\"file salvato\");\n\t\t\t\t}\n");
+    printSlowly("\t\t\t\t void ordinamento(Clienti *c, int f){\n\t\t\t\t for(int i=0; i<f-1; i++){\n\t\t\t\t  (int j=0; j<f-i-1; j++){\n\t\t\t\t   if(c[j].data.ora < c[j+1].data.ora){\n\t\t\t\t  Clienti max=c[j+1];\n\t\t\t\t  c[j+1]=c[j];\n\t\t\t\t  c[j]=max;\n\t\t\t\t   }\n\t\t\t\tif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\n\t\t\t\tClienti max=c[j+1];\n\t\t\t\tc[j+1]=c[j];\n\t\t\t\tc[j]=max;\n\t\t\t\t  }\n\t\t\t\t }\n\t\t\t\t }\n\t\t\t\t}\n\t\t\t\tvoid file(Clienti *c, int f){\n\t\t\t\tFILE =fopen(\"prenotazioni.txt\", \"w\");\n\t\t\t\tif(file==NULL){\n\t\t\t\tprintf(\"ERROR\");\n\t\t\t\t}else{\n\t\t\t\tprintf(\"file aperto con succeso\");\n\t\t\t\t}\n\t\t\t\tfprintf(file, \"numero prenotazioni %%d\", f);\n\t\t\t\tfor(int i=0; i<f; i++){\n\t\t\t\tfprintf(file, \"%%d) nome:%%s numero persone:%%d numero tavolo:%%d orario:%%d:%%d\",\n\t\t\t\ti+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t}\\n\n\t\t\t\tprintf(\"file salvato\");\n\t\t\t\t}\n", DELAY);
     do
     {
         printf("\t\t\t\t1:");
@@ -247,9 +274,12 @@ void lvl_9(int *LIFE){
             {
                 (*LIFE)--;
                 
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero6)!=0);
@@ -272,9 +302,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero4)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero4)!=0);
@@ -297,9 +330,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero5)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero5)!=0);
@@ -320,9 +356,12 @@ void lvl_9(int *LIFE){
         if(strcmp(Scelta, vero2)!=0)
             {
                 (*LIFE)--;
-                printf("\n\t\t\t\t\tRisposta sbagliata! \n\t\t\t\t\t Hai perso una vita! \n\t\t\t\t\t Adesso hai %d vite \n\n", *LIFE);
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+
             }else{
-                printf("\n\t\t\t\t\tCorretto!\n\n");
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
