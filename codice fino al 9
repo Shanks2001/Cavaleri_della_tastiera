@@ -5,7 +5,7 @@
 #include <windows.h>
 
 #define DELAY 10000
-#define max 100
+#define MAX 100
 
 void setColor(int textColor, int bgColor) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -14,7 +14,7 @@ void setColor(int textColor, int bgColor) {
 
 int Scelta() {
     char Scelta;
-    char buffer[max];
+    char buffer[MAX];
     printf("\t\t\t\t:");
    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         
@@ -81,7 +81,7 @@ void checklife(int LIFE)
 
 int main()
 {
-    int LIFE=3;
+    int LIFE=MAX;
     lvl_1(&LIFE);
     
     return 0;
@@ -94,6 +94,7 @@ void lvl_1(int *LIFE)
     printSlowly("  \t\t\t\t~ ~ LIVELLO 1 ~ ~ \n\n", DELAY);
     do
     {
+        setColor(3,0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);//a
         
         printSlowly("  \t\t\t\tA cosa serve la printf?\n", DELAY);
@@ -183,6 +184,7 @@ void lvl_2(int *LIFE)
         printSlowly("  \t\t\t\t~ ~ LIVELLO 2 ~ ~ \n\n", DELAY);
         int risposta;
     do{
+        setColor(3, 0);
         printSlowly("  \t\t\t\t--DOMANDA NUMERO 1--\n ", DELAY);//b
         printSlowly("  \t\t\t\tA cosa serve la for?\n", DELAY);
         printSlowly("  \t\t\t\tA) Permette di eseguire determinate istruzioni solo se una condizione specificata e' vera\n", DELAY);
@@ -243,7 +245,7 @@ void lvl_2(int *LIFE)
             setColor(4, 0);
             (*LIFE)--;
             char formattedMessage[100];
-            snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+            snprintf(formattedMessage, sizeof(formattedMessage), "\n\t\t\t\tRisposta sbagliata! \n\t\t\t\tHai perso una vita! \n\t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         } else
         {
@@ -267,9 +269,10 @@ void lvl_3(int *LIFE)
         printSlowly("  \t\t\t\t~ ~ LIVELLO 3 ~ ~\n\n", DELAY);
     do
     {
+        setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
-        setColor(2, 0);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
+        setColor(8, 0);
         printSlowly("  \t\t\t\tfor(i = 0; i < 15; i++){\n", DELAY);
         printSlowly("  \t\t\t\t   printf(\" scrivi un numero %d:\", i + 1);\n", DELAY);
         printSlowly("  \t\t\t\t   scanf(\"%d\", &serie[i]);\n", DELAY);
@@ -277,6 +280,7 @@ void lvl_3(int *LIFE)
         printSlowly("  \t\t\t\t   ___(i = 0; i < 15; i++){\n", DELAY);
         printSlowly("  \t\t\t\t   somma += serie[i];\n", DELAY);
         printSlowly("  \t\t\t\t}\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)scanf\n", DELAY);//c
         printSlowly("  \t\t\t\tB)printf\n", DELAY);
         printSlowly("  \t\t\t\tC)for\n", DELAY);
@@ -289,7 +293,8 @@ void lvl_3(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
-        printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
     
         checklife(*LIFE);
@@ -297,15 +302,17 @@ void lvl_3(int *LIFE)
     }while (risposta != 3);
 
     do
-    {setColor(3, 0);
+    {   
+        setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\tchar a;\n", DELAY);
         printSlowly("  \t\t\t\tprintf(\"codice ascii di una letere\");\n", DELAY);
         printSlowly("  \t\t\t\tprintf(\"scrivi un caratere:\");\n", DELAY);
         printSlowly("  \t\t\t\tscanf(\"%c\", _a);\n", DELAY);
         printSlowly("  \t\t\t\tprintf(\"ecco il valore in ascii: %d\", a);\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA);\n", DELAY);
         printSlowly("  \t\t\t\tB),\n", DELAY);
         printSlowly("  \t\t\t\tC)&\n", DELAY);//c
@@ -318,7 +325,8 @@ void lvl_3(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
-        printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
     
@@ -328,12 +336,13 @@ void lvl_3(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\tdo {\n", DELAY);
         printSlowly("  \t\t\t\t    printf(\"Inserisci il valore %d: \", indice + 1);\n", DELAY);
         printSlowly("  \t\t\t\t    scanf(\"%d\", _array[indice]);\n", DELAY);
         printSlowly("  \t\t\t\t    indice++;\n", DELAY);
         printSlowly("  \t\t\t\t}while (indice < 10 && array[indice - 1] != -1);\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA);\n", DELAY);
         printSlowly("  \t\t\t\tB),\n", DELAY);
         printSlowly("  \t\t\t\tC)&\n", DELAY);//c
@@ -346,7 +355,8 @@ void lvl_3(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
-        printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
     
         checklife(*LIFE);
@@ -368,7 +378,7 @@ void lvl_4(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\t___(i = 0; i < 15; i++){\n", DELAY);
         printSlowly("  \t\t\t\t    printf(\" scrivi un numero %d:\", i + 1);\n", DELAY);
         printSlowly("  \t\t\t\t    scanf(\"%d\", &serie[i]);\n", DELAY);
@@ -376,6 +386,7 @@ void lvl_4(int *LIFE)
         printSlowly("  \t\t\t\tfor(i = 0; i < 15; i++){\n", DELAY);
         printSlowly("  \t\t\t\t    somma += serie[i];\n", DELAY);
         printSlowly("  \t\t\t\t}\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)scanf\n", DELAY);//c
         printSlowly("  \t\t\t\tB)printf\n", DELAY);
         printSlowly("  \t\t\t\tC)for\n", DELAY);
@@ -388,6 +399,7 @@ void lvl_4(int *LIFE)
             printSlowly(formattedMessage, DELAY);
             }else
             {
+                setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
         checklife(*LIFE);
@@ -399,7 +411,7 @@ void lvl_4(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\tint palindromo(char parola[]){\n", DELAY);
         printSlowly("  \t\t\t\t    int l = strlen(parola);\n", DELAY);
         printSlowly("  \t\t\t\t    for(int i=0; i<_/2; i++){\n", DELAY);
@@ -408,6 +420,7 @@ void lvl_4(int *LIFE)
         printSlowly("  \t\t\t\t         }\n", DELAY);
         printSlowly("  \t\t\t\t     }\n", DELAY);
         printSlowly("  \t\t\t\t     return 1;\n}", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA);\n", DELAY);//b
         printSlowly("  \t\t\t\tB)l\n", DELAY);
         printSlowly("  \t\t\t\tC)i++\n", DELAY);
@@ -420,6 +433,7 @@ void lvl_4(int *LIFE)
             printSlowly(formattedMessage, DELAY);
             }else
             {
+                setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
         checklife(*LIFE);
@@ -430,7 +444,7 @@ void lvl_4(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\tint filtro(char a){\n", DELAY);
         printSlowly("  \t\t\t\tif((_a_>=_A_ && _a_<=_Z_)){\n", DELAY);
         printSlowly("  \t\t\t\t   printf(\"e' una letera maiuscola \");\n", DELAY);
@@ -443,6 +457,7 @@ void lvl_4(int *LIFE)
         printSlowly("  \t\t\t\t    return -1;\n", DELAY);
         printSlowly("  \t\t\t\t    }\n", DELAY);
         printSlowly("   \t\t\t\t   }\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)''\n", DELAY);//a
         printSlowly("  \t\t\t\tB))\n", DELAY);
         printSlowly("  \t\t\t\tC);\n", DELAY);
@@ -455,6 +470,7 @@ void lvl_4(int *LIFE)
             printSlowly(formattedMessage, DELAY);
             }else
             {
+                setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
 
@@ -478,7 +494,7 @@ void lvl_5(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n}", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\t#include<stdio.h>\n", DELAY);
         printSlowly("  \t\t\t\ttypedef struct{ \n", DELAY);
         printSlowly("  \t\t\t\t   char via[30];\n", DELAY);
@@ -503,6 +519,7 @@ void lvl_5(int *LIFE)
         printSlowly("  \t\t\t\tscanf(\"%s %s %d\", persona1.indirizoresidente.via, persona1.indirizoresidente.citta, &persona1.indirizoresidente.CAP);\n", DELAY);
         printSlowly("  \t\t\t\tgetchar();\n", DELAY);
         printSlowly("  \t\t\t\t}\n", DELAY);
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)return 0;\n", DELAY);//b
         printSlowly("  \t\t\t\tB).\n", DELAY);
         printSlowly("  \t\t\t\tC);\n", DELAY);
@@ -515,6 +532,7 @@ void lvl_5(int *LIFE)
             printSlowly(formattedMessage, DELAY);
             }else
             {
+                setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
         
@@ -527,7 +545,7 @@ void lvl_5(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\t#include<stdio.h>\n\n", DELAY);
         printSlowly("  \t\t\t\t_________________\n\n", DELAY);
         printSlowly("  \t\t\t\tint main(){\n", DELAY);
@@ -547,7 +565,7 @@ void lvl_5(int *LIFE)
         printSlowly("  \t\t\t\ttottale = a + b;\n", DELAY);
         printSlowly("  \t\t\t\treturn tottale;\n", DELAY);
         printSlowly("  \t\t\t\t}\n", DELAY);
-
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)int somma(int a, int b);\n", DELAY);//a
         printSlowly("  \t\t\t\tB)somma(n1,n2)\n", DELAY);
         printSlowly("  \t\t\t\tC)getchar();\n", DELAY);
@@ -559,6 +577,7 @@ void lvl_5(int *LIFE)
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             }else
             {
+                setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
     
@@ -571,7 +590,7 @@ void lvl_5(int *LIFE)
         setColor(3, 0);
         printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);
         printSlowly("  \t\t\t\tcosa manca?\n", DELAY);
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("  \t\t\t\t#include<stdio.h>\n", DELAY);
         printSlowly("  \t\t\t\t#include<string.h>\n", DELAY);
         printSlowly("  \t\t\t\tint main (){\n", DELAY);
@@ -589,7 +608,7 @@ void lvl_5(int *LIFE)
         printSlowly("  \t\t\t\t printf(\"il valore delle celle di memoria %d, %c\", *p1, *p2);\n", DELAY);
         printSlowly("  \t\t\t\t return 0;\n", DELAY);
         printSlowly("  \t\t\t\t}\n", DELAY); 
-
+        setColor(3, 0);
         printSlowly("  \t\t\t\tA)%d\n", DELAY);//c
         printSlowly("  \t\t\t\tB)%p\n", DELAY);
         printSlowly("  \t\t\t\tC)*\n", DELAY);
@@ -600,10 +619,11 @@ void lvl_5(int *LIFE)
             char formattedMessage[100];
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
-            }else
-            {
-                printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
-            }
+        }else
+        {
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+        }
     
         checklife(*LIFE);
     
@@ -619,22 +639,22 @@ void lvl_6(int *LIFE)
     char vero[] = "printf";
     char vero2[] = ";";
     char vero1 []="&";
-    char scrivi[max];
+    char scrivi[MAX];
     setColor(3, 0);
     printSlowly("  \t\t\t\t~ ~ LIVELLO 6 ~ ~ \n\n", DELAY);
     
     do {
         setColor(3, 0);
-    printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
-    printSlowly("\t\t\t\t\tscrivi cosa manca per far stampare a schermo\n", DELAY);
-    setColor(2, 0);
-    printSlowly("\t\t\t\t\t_______(\"franco bibi\");\n", DELAY);//printf")
-    printSlowly("\t\t\t\t\trisposta:", DELAY);
-    scanf("\t\t\t\t\t%s", scrivi);
-    int len = strlen(scrivi);
-    if (scrivi[len - 1] == '\n')
+        printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
+        printSlowly("\t\t\t\t\tscrivi cosa manca per far stampare a schermo\n", DELAY);
+        setColor(8, 0);
+        printSlowly("\t\t\t\t\t_______(\"franco bibi\");\n", DELAY);//printf")
+        printSlowly("\t\t\t\t\trisposta:", DELAY);
+        scanf("\t\t\t\t\t%s", scrivi);
+        int len = strlen(scrivi);
+        if (scrivi[len - 1] == '\n')
         scrivi[len - 1] = '\0';
-    while (getchar() != '\n');
+        while (getchar() != '\n');
     
     if (strcmp(scrivi, vero) != 0){
             (*LIFE)--;
@@ -644,28 +664,30 @@ void lvl_6(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
     checklife(*LIFE);
     } while (strcmp(scrivi, vero) != 0);
-    memset(scrivi, '\0', max);
+    memset(scrivi, '\0', MAX);
     
     setColor(3, 0);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca per far scrivere da tastiera", DELAY);
-    setColor(2, 0);
-    printSlowly("\n\t\t\t\t\tscanf(\"%%d\", _num);\n", DELAY);//&
-    printSlowly("\t\t\t\t\trisposta:", DELAY);
+    setColor(8, 0);
+    printSlowly("\n\t\t\t\t\tscanf(\"%d\", _num);\n", DELAY);//&
+    
 
     do
     {
-    setColor(2, 0);
-    scanf("\t\t\t\t\t%s", scrivi);
-    int len = strlen(scrivi);
-    if (scrivi[len - 1] == '\n')
+        setColor(8, 0);
+        printSlowly("\t\t\t\t\trisposta:", DELAY);
+        scanf("\t\t\t\t\t%s", scrivi);
+        int len = strlen(scrivi);
+        if (scrivi[len - 1] == '\n')
         scrivi[len - 1] = '\0';
-    while (getchar() != '\n');
-    if (strcmp(scrivi, vero1) != 0){
+        while (getchar() != '\n');
+        if (strcmp(scrivi, vero1) != 0){
             (*LIFE)--;
             char formattedMessage[100];
             setColor(4, 0);
@@ -673,20 +695,21 @@ void lvl_6(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-    checklife(*LIFE);
+         checklife(*LIFE);
     }while(strcmp(scrivi,vero1)!=0);
-    memset(scrivi, '\0', max);
+    memset(scrivi, '\0', MAX);
     setColor(3, 0);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine", DELAY);  //;,&,printf,
-    setColor(2, 0);
+    setColor(8, 0);
     printSlowly("\n\t\t\t\t\tprintf(\"scrivi un numero\")_\n", DELAY);
     printSlowly("\t\t\t\t\tscanf(\"%d\", _num);\n", DELAY);
     printSlowly("\t\t\t\t\t______(il numero scritto :%d\", num);\n", DELAY);
     do{
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("\t\t\t\t\t%s", scrivi);
         int len = strlen(scrivi);
@@ -699,15 +722,16 @@ void lvl_6(int *LIFE)
             setColor(4, 0);
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
-    }else
-    {
-        printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
-    } 
-    checklife(*LIFE);
+        }else
+        {
+            setColor(2, 0);
+            printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
+        } 
+        checklife(*LIFE);
     }while(strcmp(scrivi, vero2)!=0);
-    memset(scrivi, '\0', max);
+    memset(scrivi, '\0', MAX);
     do{
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("\t\t\t\t\t%s", scrivi);
       if(strcmp(scrivi, vero1)!=0){
@@ -718,13 +742,14 @@ void lvl_6(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
-        printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
+            setColor(2, 0);
+            printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-    checklife(*LIFE);
+        checklife(*LIFE);
     }while(strcmp(scrivi, vero1)!=0);
-    memset(scrivi, '\0', max);
+    memset(scrivi, '\0', MAX);
     do{
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t3:", DELAY);
         scanf("\t\t\t\t\t%s", scrivi);    
         if(strcmp(scrivi, vero)!=0){
@@ -735,11 +760,12 @@ void lvl_6(int *LIFE)
             printSlowly(formattedMessage, DELAY);
         }else
         {
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-    checklife(*LIFE);
+        checklife(*LIFE);
     }while(strcmp(scrivi, vero)!=0);
-    memset(scrivi, '\0', max);
+    memset(scrivi, '\0', MAX);
     system("cls");
     lvl_7(LIFE);
 }
@@ -749,7 +775,7 @@ void lvl_7( int *LIFE)
 {
     setColor(3, 0);
      printSlowly("  \t\t\t\t~ ~ LIVELLO 7 ~ ~ \n\n", DELAY);
-    char Scelta[max];
+    char Scelta[MAX];
     char vero[] = "for";
     char vero2[]= "i";
     char vero3[] = "while";
@@ -759,11 +785,11 @@ void lvl_7( int *LIFE)
     char vero6[] = "scanf";
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);
-    setColor(2, 0);
+    setColor(8, 0);
     printSlowly("\t\t\t\t\tint n=0;\n\t\t\t\t\t ___(int i = 0; i <= 10; i++){\n\t\t\t\t\tprintf(\"%d\", _);\n\t\t\t\t\t}\n", DELAY);//for,i
         do
         {
-            setColor(2, 0);
+            setColor(8, 0);
             printSlowly("\t\t\t\t\t1:", DELAY);
             scanf("%s", Scelta);
          int len = strlen(Scelta);
@@ -782,17 +808,18 @@ void lvl_7( int *LIFE)
                     snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                     printSlowly(formattedMessage, DELAY);
                 }else{
+                    setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
             checklife(*LIFE);
 
         }while(strcmp(Scelta, vero)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -812,23 +839,24 @@ void lvl_7( int *LIFE)
                 snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero2)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     setColor(3, 0);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);
-    setColor(2, 0);
-    printSlowly("\t\t\t\t\t_____(numero <= 10){\n\t\t\t\t\tprintf(\"%%d\", numero);\n\t\t\t\t\tnumero+_;\n\t\t\t\t\t}\n", DELAY);//while,+
+    setColor(8, 0);
+    printSlowly("\t\t\t\t\t_____(numero <= 10){\n\t\t\t\t\tprintf(\"%d\", numero);\n\t\t\t\t\tnumero+_;\n\t\t\t\t\t}\n", DELAY);//while,+
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -848,17 +876,18 @@ void lvl_7( int *LIFE)
                 snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero3)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -878,18 +907,19 @@ void lvl_7( int *LIFE)
                 snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero1)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     setColor(3, 0);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);//somma,&,scanf,;
-    setColor(2, 0);
+    setColor(8, 0);
     printSlowly("\t\t\t\t\tint a, b, _____;\n\t\t\t\t\tsomma= a+b;\n\t\t\t\t\tprintf(\"a =\");\n\t\t\t\t\tscanf(\"%d\", _a);\n\t\t\t\t\tprintf(\"b =\");\n\t\t\t\t\t____(\"%d\", &b);\n\t\t\t\t\tprintf( \"somma = %d\" , somma);\n", DELAY);
     do
     {
@@ -913,17 +943,18 @@ void lvl_7( int *LIFE)
                 snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero4)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -943,17 +974,18 @@ void lvl_7( int *LIFE)
                     snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                     printSlowly(formattedMessage, DELAY);
                 }else{
+                    setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero5)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t3:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -973,13 +1005,14 @@ void lvl_7( int *LIFE)
                     snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                     printSlowly(formattedMessage, DELAY);
                 }else{
+                    setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero6)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     system("cls");
     lvl_8(LIFE);
@@ -996,16 +1029,17 @@ void lvl_8(int *LIFE){
     char vero6[] = "for";
     char vero7[]= "i";
     setColor(3, 0);
-    char Scelta[max];
+    char Scelta[MAX];
 
     printSlowly("  \t\t\t\t~ ~ LIVELLO 8 ~ ~ \n\n", DELAY);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
     setColor(3, 0);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY); //i++,printf,;
-    setColor(2, 0);
-    printSlowly("\t\t\t\t\tint vet[10];\n\t\t\t\t\tfor(int i=0;i<n;___){\n\t\t\t\t\t_____(\"scrivi i valori %d :\", i + 1);\n\t\t\t\t\tscanf(\"%%d\", &vet[i]);\n\t\t\t\t\tint primo = 1_\n\t\t\t\t\tfor(j=vet[i]-1; j>1; j--){\n\t\t\t\t\tif(vet[i]%%j==0){\n\t\t\t\t\tprimo = 0;\n\t\t\t\t\t}\");\n", DELAY);
+    setColor(8, 0);
+    printSlowly("\t\t\t\t\tint vet[10];\n\t\t\t\t\tfor(int i=0;i<n;___){\n\t\t\t\t\t_____(\"scrivi i valori %d :\", i + 1);\n\t\t\t\t\tscanf(\"%d\", &vet[i]);\n\t\t\t\t\tint primo = 1_\n\t\t\t\t\tfor(j=vet[i]-1; j>1; j--){\n\t\t\t\t\tif(vet[i]%%j==0){\n\t\t\t\t\tprimo = 0;\n\t\t\t\t\t}\");\n", DELAY);
     do
     {
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1024,17 +1058,18 @@ void lvl_8(int *LIFE){
                 snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1054,17 +1089,18 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
 
     }while(strcmp(Scelta, vero2)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t3:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1084,21 +1120,22 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
     }while(strcmp(Scelta, vero1)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
    setColor(3, 0);
    printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
    printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);//=,",",;
-   setColor(2, 0);
+   setColor(8, 0);
    printSlowly("\t\t\t\t\tif(primo =_ 1){\n\t\t\t\t\tprintf(\"numero primo\"_ j);\n\t\t\t\t\t} else {\n\t\t\t\t\tprintf(\"numero non primo\", j)_\n\t\t\t\t\t}\n", DELAY);
     do
     {
-        
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1118,16 +1155,17 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
     }while(strcmp(Scelta, vero3)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1147,17 +1185,18 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero4)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t3:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1177,22 +1216,23 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero5)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     setColor(3, 0); 
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);       
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);//for,i++,",",i
-    setColor(2, 0);
+    setColor(8, 0);
     printSlowly("\t\t\t\t\t___(int i = 0; i < 10; ___){\n\t\t\t\t\tprintf(\"scrivi un valore %d:\"_ i + 1);\n\t\t\t\t\tscanf(\"%d\", &sequenza[_]);\n\t\t\t\t\t}\n", DELAY);    
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1212,17 +1252,18 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero6)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t2:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1242,17 +1283,18 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t3:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1272,6 +1314,7 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
@@ -1280,7 +1323,7 @@ void lvl_8(int *LIFE){
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t4:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1300,13 +1343,14 @@ void lvl_8(int *LIFE){
             snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
             printSlowly(formattedMessage, DELAY);
         }else{
+            setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
         checklife(*LIFE);
 
     }while(strcmp(Scelta, vero7)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
     system("cls");
     lvl_9(LIFE);
 }
@@ -1321,13 +1365,11 @@ void lvl_9(int *LIFE){
     char vero5[]= "fclose(file)";
     char vero6[] = "for";
     char vero7[]= "i";
-    char Scelta[max];
-
-    setColor(3, 0);
+    char Scelta[MAX];
     printSlowly("\n\t\t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);
     printSlowly("\n\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);
    //i++,&,;
-   setColor(2, 0);
+   setColor(8, 0);
     printSlowly("\n\t\t\t\tvoid aggiungi(Clienti *c, int *f){\n", DELAY);
     printSlowly("\t\t\t\tif(*f<50){\n", DELAY);
     printSlowly("\t\t\t\t\t int b=0;\n", DELAY);        
@@ -1346,7 +1388,7 @@ void lvl_9(int *LIFE){
     printSlowly("\n\t\t\t\t}else{\n\t\t\t\tprintf(\"ristorante pieno\");\n\t\t\t\t}\n\t\t\t\t}\n", DELAY);
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\n\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1363,9 +1405,10 @@ void lvl_9(int *LIFE){
                 (*LIFE)--;
                 setColor(4, 0);
                char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);   
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             
@@ -1373,11 +1416,11 @@ void lvl_9(int *LIFE){
 
     }while(strcmp(Scelta, vero)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1394,20 +1437,21 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero1)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1424,20 +1468,21 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero2)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
     setColor(3, 0);
     printSlowly("\n \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);
     printSlowly("\t\t\t\t\tscrivi cosa manca, in ordine\n", DELAY);//i++,if,i,;
-    setColor(2, 0);
+    setColor(8, 0);
     printSlowly("\n\t\t\t\tvoid stampa(Clienti *c, int f){\n", DELAY);
     printSlowly("\t\t\t\t   for(int i=0; i<f; ___){\n", DELAY);
     printSlowly("\t\t\t\t       printf(\"%d) nome:%s numero persone:%d numero del tavolo:%d orario:%d:%d\",\n\t\t\t\ti+1,c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t  }\n\t\t\t\t  }\n", DELAY);
@@ -1447,7 +1492,7 @@ void lvl_9(int *LIFE){
     printSlowly("\t\t\t\tvoid ricerca( Clienti *c, int f){\n \t\t\t\tj=i;\n \t\t\t\t}\n \t\t\t\t}\n \t\t\t\tprintf(\"nome:%s numero di persone:%d numero del tavolo:%d\", c[j].nome, c[j].npersone, c[j].tavolo);\n}\n", DELAY);
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1464,20 +1509,21 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);     
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1494,20 +1540,21 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     
     }while(strcmp(Scelta, vero3)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1524,23 +1571,24 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero7)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
     setColor(3, 0);
     printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);//a
     printSlowly("\n\t\t\t\t\tscrivi cosa manca, in ordine\n\n", DELAY);//for,*file,fclose(file),;
-    setColor(2, 0);
-    printSlowly("\t\t\t\t void ordinamento(Clienti *c, int f){\n\t\t\t\t for(int i=0; i<f-1; i++){\n\t\t\t\t  ___(int j=0; j<f-i-1; j++){\n\t\t\t\t   if(c[j].data.ora < c[j+1].data.ora){\n\t\t\t\t  Clienti max=c[j+1];\n\t\t\t\t  c[j+1]=c[j];\n\t\t\t\t  c[j]=max;\n\t\t\t\t   }\n\t\t\t\tif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\n\t\t\t\tClienti max=c[j+1];\n\t\t\t\tc[j+1]=c[j];\n\t\t\t\tc[j]=max;\n\t\t\t\t  }\n\t\t\t\t }\n\t\t\t\t }\n\t\t\t\t}\n\t\t\t\tvoid file(Clienti *c, int f){\n\t\t\t\tFILE _____=fopen(\"prenotazioni.txt\", \"w\");\n\t\t\t\tif(file==NULL){\n\t\t\t\tprintf(\"ERROR\");\n\t\t\t\t}else{\n\t\t\t\tprintf(\"file aperto con succeso\");\n\t\t\t\t}\n\t\t\t\tfprintf(file, \"numero prenotazioni %d\", f);\n\t\t\t\tfor(int i=0; i<f; i++){\n\t\t\t\tfprintf(file, \"%d) nome:%s numero persone:%d numero tavolo:%d orario:%d:%d\",\n\t\t\t\ti+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t}\n\n\t\t\t\t_________________\n\t\t\t\tprintf(\"file salvato\");\n\t\t\t\t}\n", DELAY);
+    setColor(8, 0);
+    printSlowly("\t\t\t\t void ordinamento(Clienti *c, int f){\n\t\t\t\t for(int i=0; i<f-1; i++){\n\t\t\t\t  ___(int j=0; j<f-i-1; j++){\n\t\t\t\t   if(c[j].data.ora < c[j+1].data.ora){\n\t\t\t\t  Clienti MAX=c[j+1];\n\t\t\t\t  c[j+1]=c[j];\n\t\t\t\t  c[j]=MAX;\n\t\t\t\t   }\n\t\t\t\tif(c[j].data.ora == c[j+1].data.ora && c[j].data.minuti < c[j+1].data.minuti){\n\t\t\t\tClienti MAX=c[j+1];\n\t\t\t\tc[j+1]=c[j];\n\t\t\t\tc[j]=MAX;\n\t\t\t\t  }\n\t\t\t\t }\n\t\t\t\t }\n\t\t\t\t}\n\t\t\t\tvoid file(Clienti *c, int f){\n\t\t\t\tFILE _____=fopen(\"prenotazioni.txt\", \"w\");\n\t\t\t\tif(file==NULL){\n\t\t\t\tprintf(\"ERROR\");\n\t\t\t\t}else{\n\t\t\t\tprintf(\"file aperto con succeso\");\n\t\t\t\t}\n\t\t\t\tfprintf(file, \"numero prenotazioni %d\", f);\n\t\t\t\tfor(int i=0; i<f; i++){\n\t\t\t\tfprintf(file, \"%d) nome:%s numero persone:%d numero tavolo:%d orario:%d:%d\",\n\t\t\t\ti+1, c[i].nome, c[i].npersone, c[i].tavolo, c[i].data.ora, c[i].data.minuti);\n\t\t\t\t}\n\n\t\t\t\t_________________\n\t\t\t\tprintf(\"file salvato\");\n\t\t\t\t}\n", DELAY);
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t1:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1557,19 +1605,20 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero6)!=0);
 
-    memset(Scelta, '\0', max);
+    memset(Scelta, '\0', MAX);
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t2:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1586,19 +1635,20 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
     }while(strcmp(Scelta, vero4)!=0);
 
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t3:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1615,9 +1665,10 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
@@ -1625,7 +1676,7 @@ void lvl_9(int *LIFE){
 
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printf("\t\t\t\t4:");
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1642,15 +1693,16 @@ void lvl_9(int *LIFE){
                 setColor(4, 0);
                 (*LIFE)--;
                 char formattedMessage[100];
-                snprintf(formattedMessage, sizeof(formattedMessage), "\nRisposta sbagliata! \nHai perso una vita! \nAdesso hai %d vite \n\n", *LIFE);
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
                 printSlowly(formattedMessage, DELAY);
             }else{
+                setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             checklife(*LIFE);
 
     }while(strcmp(Scelta, vero2)!=0);
-    memset(Scelta, '\0', max); //RESET ARRAY
+    memset(Scelta, '\0', MAX); //RESET ARRAY
 
     system("cls");
     END(*LIFE);
@@ -1677,7 +1729,7 @@ void END(int LIFE){
 }
 void ripeti(int *LIFE){
     char Scelta;
-    char buffer[max];
+    char buffer[MAX];
     
     while (1) {
         printSlowly("  \t\t\t\tVuoi riprovare? (y/n): ", DELAY);
