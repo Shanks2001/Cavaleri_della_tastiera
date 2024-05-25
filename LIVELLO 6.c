@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #define DELAY 10000
-#define max 100
+#define MAX 100
 
 void setColor(int textColor, int bgColor) 
 {
