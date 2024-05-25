@@ -81,7 +81,7 @@ void checklife(int LIFE)
 
 int main()
 {
-    int LIFE=MAX;
+    int LIFE=3;
     lvl_1(&LIFE);
     
     return 0;
