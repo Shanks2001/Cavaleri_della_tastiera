@@ -684,7 +684,7 @@ int seleziona_livello (LevelPtr livelli, int* LIFE)
 
 int main(){
     int LIFE=3;
-    int LVL = 4;
+    int LVL = 4;/////////////////////////CAMBIA PER MODIFICARE LIVELLO
     //lvl_1(&LIFE);
     seleziona_livello(livelli[LVL-1], &LIFE);////////////////////////////////////////////////////////
 
