@@ -10,7 +10,9 @@ int R_checkpoint( int *LIFE );
 
 void lvl_save ( int* LVL_P );
 
-int lvl_open ( int* LVL_P );
+int lvlFile_open ( int* LVL_P );
+
+//array di funzioni//////////////
 ///////////////////////////////////////////////////////////////////////
 
 //////////////////////SAVE_LEVEL////////////////////////////
@@ -39,7 +41,7 @@ void lvl_save ( int* LVL_P )
 }
 
 
-int lvl_open ( int* LVL_P )/////////////DA CONTROLLARE
+int lvlFile_open ( int* LVL_P )/////////////DA CONTROLLARE
 {
 
 
