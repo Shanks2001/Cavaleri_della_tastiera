@@ -53,13 +53,11 @@ void lvl_3(int *LIFE);
 void lvl_4(int *LIFE);
 void lvl_5(int *LIFE);
 void lvl_6(int *LIFE);
-void lvl_7( int *LIFE);
+void lvl_7(int *LIFE);
 void lvl_8(int *LIFE);
 void lvl_9(int *LIFE);
 void checklife(int LIFE);
 void printSlowly(const char *text, unsigned int delay);
-
-//VARIABILE CHIAMATA "LIFE"
 
 void printSlowly(const char *text, unsigned int delay) 
 {
@@ -81,7 +79,7 @@ void checklife(int LIFE)
 
 int main()
 {
-    int LIFE=3;
+    int LIFE = 3;
     lvl_1(&LIFE);
     
     return 0;
