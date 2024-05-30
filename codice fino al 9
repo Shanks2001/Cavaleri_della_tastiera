@@ -11,39 +11,7 @@ void setColor(int textColor, int bgColor) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
 }
-
-int Scelta() {
-    char Scelta;
-    char buffer[MAX];
-    printf("\t\t\t\t:");
-   if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-        
-        Scelta = buffer[0];
-        
-        if (Scelta == '\n' && buffer[1] == '\0') {
-            
-            Scelta = ' ';
-        }
-    } else {
-        
-        fprintf(stderr, "Input error.\n");
-        exit(1);
-    }
-    switch(Scelta) {
-        case 'a':
-        case 'A':
-            return 1;
-        case 'b':
-        case 'B':
-            return 2;
-        case 'c':
-        case 'C':
-            return 3;
-        default:
-            return 4;
-    }
-}
-
+void BENVENUTO();
 void GAMEOVER(int LIFE);
 void END(int LIFE);
 void ripeti(int *LIFE);
@@ -53,11 +21,13 @@ void lvl_3(int *LIFE);
 void lvl_4(int *LIFE);
 void lvl_5(int *LIFE);
 void lvl_6(int *LIFE);
-void lvl_7(int *LIFE);
+void lvl_7( int *LIFE);
 void lvl_8(int *LIFE);
 void lvl_9(int *LIFE);
 void checklife(int LIFE);
 void printSlowly(const char *text, unsigned int delay);
+
+//VARIABILE CHIAMATA "LIFE"
 
 void printSlowly(const char *text, unsigned int delay) 
 {
@@ -67,7 +37,48 @@ void printSlowly(const char *text, unsigned int delay)
         usleep(delay); 
     }
 }
+int Scelta() {
+    char buffer[MAX];
+    char Scelta;
+    int riprova=0;
+    
 
+    do{
+        printf("  \t\t\t\t:");
+        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        
+            Scelta = buffer[0];
+        
+        
+            if (Scelta == '\n' && buffer[1] == '\0') {
+            
+                Scelta = ' ';
+            }
+        } else {
+        
+            fprintf(stderr, "Input error.\n");
+            exit(1);
+        }
+ 
+        switch(Scelta) {
+            case 'a':
+            case 'A':
+                return 1;
+            case 'b':
+            case 'B':
+                return 2;
+            case 'c':
+            case 'C':
+                return 3;
+            default:
+            printSlowly("\n \t\t\t\t il caratere inserito non e' corretto\n\t\t\t\t usa un caretere in sovrimpressione\n", DELAY);
+            riprova++;
+
+        }
+    }while(riprova!=4);
+    printSlowly("\n \t\t\t\t hai rotto il ca**o ", DELAY);
+    return 4;
+}
 void checklife(int LIFE)
 {
  if (LIFE == 0) 
@@ -79,7 +90,8 @@ void checklife(int LIFE)
 
 int main()
 {
-    int LIFE = 3;
+    int LIFE=3;
+    BENVENUTO();
     lvl_1(&LIFE);
     
     return 0;
@@ -89,7 +101,7 @@ void lvl_1(int *LIFE)
 {
     int risposta;
     setColor(3, 0);
-    printSlowly("  \t\t\t\t~ ~ LIVELLO 1 ~ ~ \n\n", DELAY);
+    printSlowly("\n  \t\t\t\t~ ~ LIVELLO 1 ~ ~ \n\n", DELAY);
     do
     {
         setColor(3,0);
@@ -921,7 +933,7 @@ void lvl_7( int *LIFE)
     printSlowly("\t\t\t\t\tint a, b, _____;\n\t\t\t\t\tsomma= a+b;\n\t\t\t\t\tprintf(\"a =\");\n\t\t\t\t\tscanf(\"%d\", _a);\n\t\t\t\t\tprintf(\"b =\");\n\t\t\t\t\t____(\"%d\", &b);\n\t\t\t\t\tprintf( \"somma = %d\" , somma);\n", DELAY);
     do
     {
-        setColor(2, 0);
+        setColor(8, 0);
         printSlowly("\t\t\t\t\t1:", DELAY);
         scanf("%s", Scelta);
         int len = strlen(Scelta);
@@ -1724,6 +1736,18 @@ void END(int LIFE){
     printf("  \t\t\t\t\t\t\tE         NN NN  NN   D     DD\t\t\t \n");
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN  NN NN   DDDDDD\t\t\t   \n");
     ripeti(&LIFE);
+}
+void BENVENUTO(){
+    setColor(13, 0);
+    printf("  \t\t\t\tBBBBBBB   EEEEEEE   NN     NN  VV     VV  EEEEEEE  NN     NN  UU   UU  TTTTTTT  OOOOO   \t \t \n");
+    printf("  \t\t\t\tBB    BB  E         NNN    NN  VV     VV  E        NNN    NN  UU   UU    TTT   O     O  \t \t  \n");
+    printf("  \t\t\t\tBBBBBBB   EEEEE     NN NN  NN   VV   VV   EEEEE    NN NN  NN  UU   UU    TTT   O     O  \t \t   \n");
+    printf("  \t\t\t\tBB    BB  E         NN  NN NN    VV VV    E        NN  NN NN  UU   UU    TTT   O     O  \t \t   \n");
+    printf("  \t\t\t\tBBBBBBB   EEEEEEE   NN    NNN     VVV     EEEEEEE  NN    NNN   UUUUU     TTT    OOOOO   \t \t  \n");
+    printf("\n");
+    printSlowly("\n\t\t\t\t\tschiacia un tasto e parti", DELAY);
+    getchar();
+    system("cls");
 }
 void ripeti(int *LIFE){
     char Scelta;
