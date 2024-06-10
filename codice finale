@@ -7,27 +7,85 @@
 #define DELAY 10000
 #define MAX 100
 
+
+void setColor(int textColor, int bgColor);
+void chiamate_salvate(int *LIFE, int *cake);
+void file(int *cake);
+void rea(int *cake);
+void BENVENUTO();
+void GAMEOVER(int LIFE, int *cake);
+void END(int LIFE, int *cake);
+void checklife(int LIFE, int *cake);
+void ripeti(int *LIFE, int *cake);
+int Scelta(); 
+void lvl_1(int *LIFE, int *cake);
+void lvl_2(int *LIFE, int *cake);
+void lvl_3(int *LIFE, int *cake);
+void lvl_4(int *LIFE, int *cake);
+void lvl_5(int *LIFE, int *cake);
+void lvl_6(int *LIFE, int *cake);
+void lvl_7( int *LIFE, int *cake);
+void lvl_8(int *LIFE, int *cake);
+void lvl_9(int *LIFE, int *cake);
+void BOSS(int *LIFE, int *cake);
+
+int main(){
+    BENVENUTO();
+    int cake=0;
+    int LIFE=3;
+    rea(&cake);
+    chiamate_salvate(&LIFE, &cake);
+    
+    return 0;
+}
+
 void setColor(int textColor, int bgColor) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
 }
-void BENVENUTO();
-void GAMEOVER(int LIFE);
-void END(int LIFE);
-void ripeti(int *LIFE);
-void lvl_1(int *LIFE);
-void lvl_2(int *LIFE);
-void lvl_3(int *LIFE);
-void lvl_4(int *LIFE);
-void lvl_5(int *LIFE);
-void lvl_6(int *LIFE);
-void lvl_7( int *LIFE);
-void lvl_8(int *LIFE);
-void lvl_9(int *LIFE);
-void checklife(int LIFE);
-void printSlowly(const char *text, unsigned int delay);
 
-//VARIABILE CHIAMATA "LIFE"
+void file(int *cake){
+    (*cake)++;
+    FILE *fp=fopen("salva.txt","w");
+    if(fp==NULL){
+        printf("ERROR");
+        exit(1);
+    }else{
+        fprintf(fp, "%d", *cake);
+    }
+    fclose(fp);
+}
+void rea(int *cake){
+    FILE *fp=fopen("salva.txt","r");
+    if(fp==NULL){
+        file(cake);
+    }else{
+        fscanf(fp, "%d", cake);
+    }
+    fclose(fp);
+}
+void chiamate_salvate(int *LIFE, int *cake){
+    switch(*cake){
+        case 1:
+        lvl_1(LIFE, cake);
+        case 2:
+        lvl_2(LIFE, cake);
+        case 3:
+        lvl_3(LIFE, cake);
+        case 4:
+        lvl_4(LIFE, cake);
+        case 5:
+        lvl_5(LIFE, cake);
+        case 6:
+        lvl_6(LIFE, cake);
+        case 7:
+        lvl_7(LIFE, cake);
+        case 8:
+        lvl_8(LIFE, cake);
+        case 9:
+        lvl_9(LIFE, cake);
+    }
+}
 
 void printSlowly(const char *text, unsigned int delay) 
 {
@@ -42,7 +100,6 @@ int Scelta() {
     char Scelta;
     int riprova=0;
     
-
     do{
         printf("  \t\t\t\t:");
         if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
@@ -79,25 +136,16 @@ int Scelta() {
     printSlowly("\n \t\t\t\t hai rotto il ca**o ", DELAY);
     return 4;
 }
-void checklife(int LIFE)
+void checklife(int LIFE, int *cake)
 {
  if (LIFE == 0) 
         {
             system("cls");
-            GAMEOVER(LIFE);
+            GAMEOVER(LIFE, cake);
         }
 }
 
-int main()
-{
-    int LIFE=3;
-    BENVENUTO();
-    lvl_1(&LIFE);
-    
-    return 0;
-}
-
-void lvl_1(int *LIFE)
+void lvl_1(int *LIFE, int *cake)
 {
     int risposta;
     setColor(3, 0);
@@ -125,7 +173,7 @@ void lvl_1(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
 
-    checklife(*LIFE);
+    checklife(*LIFE, cake);
     }while (risposta != 1);
 
     do
@@ -152,7 +200,7 @@ void lvl_1(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         } 
     
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
    
     } while(risposta != 3);
 
@@ -180,15 +228,16 @@ void lvl_1(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         } 
 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
    
     }while(risposta!=1);
-
+    
     system("cls");
-    lvl_2(LIFE);
+    file(cake);
+    lvl_2(LIFE, cake);
 }
 
-void lvl_2(int *LIFE)
+void lvl_2(int *LIFE, int *cake)
 {
         setColor(3, 0);
         printSlowly("  \t\t\t\t~ ~ LIVELLO 2 ~ ~ \n\n", DELAY);
@@ -213,7 +262,7 @@ void lvl_2(int *LIFE)
             setColor(2, 0);
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
         
     }while (risposta != 2);
 
@@ -238,7 +287,7 @@ void lvl_2(int *LIFE)
             setColor(2, 0);
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 2);
 
@@ -262,17 +311,17 @@ void lvl_2(int *LIFE)
             setColor(2, 0);
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 3);
 
     system("cls");
-
-    lvl_3(LIFE);
+    file(cake);
+    lvl_3(LIFE, cake);
     
 }
 
-void lvl_3(int *LIFE)
+void lvl_3(int *LIFE, int *cake)
 {
     setColor(3, 0);
         int risposta;
@@ -307,7 +356,7 @@ void lvl_3(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
     
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
         
     }while (risposta != 3);
 
@@ -338,7 +387,7 @@ void lvl_3(int *LIFE)
             setColor(2, 0);
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 3);
     do
@@ -369,16 +418,16 @@ void lvl_3(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
     
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
    
     }while(risposta != 3);
 
     system("cls");
-
-    lvl_4(LIFE);
+    file(cake);
+    lvl_4(LIFE, cake);
 }
 
-void lvl_4(int *LIFE)
+void lvl_4(int *LIFE, int *cake)
 {
     setColor(3, 0);
         printSlowly("  \t\t\t\t~ ~ LIVELLO 4 ~ ~ \n\n", DELAY);
@@ -412,7 +461,7 @@ void lvl_4(int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
         
     }while (risposta != 3);
 
@@ -446,7 +495,7 @@ void lvl_4(int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 2);
     do
@@ -484,17 +533,17 @@ void lvl_4(int *LIFE)
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta!=1);
 
     system("cls");
-
-    lvl_5(LIFE);
+    file(cake);
+    lvl_5(LIFE, cake);
     
 }
 
-void lvl_5(int *LIFE)
+void lvl_5(int *LIFE, int *cake)
 {
     setColor(3, 0);
      printf("  \t\t\t\t~ ~ LIVELLO 5 ~ ~ \n\n");
@@ -546,7 +595,7 @@ void lvl_5(int *LIFE)
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
         
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
         
     }while (risposta != 2);
 
@@ -591,7 +640,7 @@ void lvl_5(int *LIFE)
                 printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
             }
     
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 1);
     
@@ -635,16 +684,17 @@ void lvl_5(int *LIFE)
             printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
         }
     
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     
     }while(risposta != 3);
 
     system("cls");
-    lvl_6(LIFE);
+    file(cake);
+    lvl_6(LIFE, cake);
     
 }
 
-void lvl_6(int *LIFE)
+void lvl_6(int *LIFE, int *cake)
 {
     char vero[] = "printf";
     char vero2[] = ";";
@@ -677,7 +727,7 @@ void lvl_6(int *LIFE)
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-    checklife(*LIFE);
+    checklife(*LIFE, cake);
     } while (strcmp(scrivi, vero) != 0);
     memset(scrivi, '\0', MAX);
     
@@ -708,7 +758,7 @@ void lvl_6(int *LIFE)
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-         checklife(*LIFE);
+         checklife(*LIFE, cake);
     }while(strcmp(scrivi,vero1)!=0);
     memset(scrivi, '\0', MAX);
     setColor(3, 0);
@@ -737,7 +787,7 @@ void lvl_6(int *LIFE)
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     }while(strcmp(scrivi, vero2)!=0);
     memset(scrivi, '\0', MAX);
     do{
@@ -755,7 +805,7 @@ void lvl_6(int *LIFE)
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     }while(strcmp(scrivi, vero1)!=0);
     memset(scrivi, '\0', MAX);
     do{
@@ -773,15 +823,17 @@ void lvl_6(int *LIFE)
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         } 
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     }while(strcmp(scrivi, vero)!=0);
     memset(scrivi, '\0', MAX);
+
     system("cls");
-    lvl_7(LIFE);
+    file(cake);
+    lvl_7(LIFE, cake);
 }
 
 
-void lvl_7( int *LIFE)
+void lvl_7( int *LIFE, int *cake)
 {
     setColor(3, 0);
      printSlowly("  \t\t\t\t~ ~ LIVELLO 7 ~ ~ \n\n", DELAY);
@@ -821,7 +873,7 @@ void lvl_7( int *LIFE)
                     setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
         }while(strcmp(Scelta, vero)!=0);
 
@@ -852,7 +904,7 @@ void lvl_7( int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero2)!=0);
 
@@ -889,7 +941,7 @@ void lvl_7( int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero3)!=0);
 
@@ -920,7 +972,7 @@ void lvl_7( int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero1)!=0);
 
@@ -956,7 +1008,7 @@ void lvl_7( int *LIFE)
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero4)!=0);
 
@@ -987,7 +1039,7 @@ void lvl_7( int *LIFE)
                     setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero5)!=0);
 
@@ -1018,18 +1070,19 @@ void lvl_7( int *LIFE)
                     setColor(2, 0);
                     printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
                 }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero6)!=0);
 
     memset(Scelta, '\0', MAX); //RESET ARRAY
 
     system("cls");
-    lvl_8(LIFE);
+    file(cake);
+    lvl_8(LIFE, cake);
     
 }
 
-void lvl_8(int *LIFE){
+void lvl_8(int *LIFE, int *cake){
     char vero[]= "i++";
     char vero1[] = ";";
     char vero2[] = "printf";
@@ -1071,7 +1124,7 @@ void lvl_8(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -1102,7 +1155,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero2)!=0);
 
@@ -1133,7 +1186,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero1)!=0);
 
     memset(Scelta, '\0', MAX); //RESET ARRAY
@@ -1168,7 +1221,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero3)!=0);
 
     memset(Scelta, '\0', MAX);
@@ -1198,7 +1251,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero4)!=0);
 
@@ -1229,7 +1282,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero5)!=0);
 
@@ -1265,7 +1318,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero6)!=0);
 
@@ -1296,7 +1349,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -1327,7 +1380,7 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero4)!=0);
 
@@ -1356,15 +1409,16 @@ void lvl_8(int *LIFE){
             setColor(2, 0);
             printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
         }
-        checklife(*LIFE);
+        checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero7)!=0);
 
     memset(Scelta, '\0', MAX); //RESET ARRAY
     system("cls");
-    lvl_9(LIFE);
+    file(cake);
+    lvl_9(LIFE, cake);
 }
-void lvl_9(int *LIFE){
+void lvl_9(int *LIFE, int *cake){
     setColor(3, 0);
     printf("  \t\t\t\t~ ~ LIVELLO 9 ~ ~ \n\n");
     char vero[]= "i++";
@@ -1422,7 +1476,7 @@ void lvl_9(int *LIFE){
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
             
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -1453,7 +1507,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero1)!=0);
 
@@ -1484,7 +1538,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero2)!=0);
 
@@ -1525,7 +1579,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero)!=0);
 
@@ -1556,7 +1610,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     
     }while(strcmp(Scelta, vero3)!=0);
 
@@ -1587,7 +1641,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero7)!=0);
 
     memset(Scelta, '\0', MAX); //RESET ARRAY
@@ -1621,7 +1675,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero6)!=0);
 
     memset(Scelta, '\0', MAX);
@@ -1651,7 +1705,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero4)!=0);
 
     memset(Scelta, '\0', MAX); //RESET ARRAY
@@ -1681,7 +1735,7 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
     }while(strcmp(Scelta, vero5)!=0);
 
     do
@@ -1709,16 +1763,198 @@ void lvl_9(int *LIFE){
                 setColor(2, 0);
                 printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
             }
-            checklife(*LIFE);
+            checklife(*LIFE, cake);
 
     }while(strcmp(Scelta, vero2)!=0);
     memset(Scelta, '\0', MAX); //RESET ARRAY
 
     system("cls");
-    END(*LIFE);
+    file(cake);
+    BOSS(LIFE, cake);
 }
-void GAMEOVER(int LIFE){
-    setColor(4, 0);
+void BOSS(int *LIFE, int *cake){
+    char Scelt[MAX];
+     char vero2[]= ",";
+    char vero[]= "array[i]";
+    char vero1[]="s_ptr";
+    int risposta;
+    setColor(3, 0);
+    printSlowly("\n  \t\t\t\t~ ~ BOSS ~ ~ \n\n", DELAY);
+    do
+    {
+        setColor(3,0);
+        printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 1 -- \n", DELAY);//a
+        printSlowly("  \t\t\t\tA cosa serva manca a questo codice?\n", DELAY);
+        setColor(8, 0);
+        printSlowly("  \t\t\t\tvoid elimina(int *array, int *n){\n\t\t\t\t\tint k=0;\n\t\t\t\tfor (int i = 0; i < *n; i++) {\n\t\t\t\t\t\tint g = 0;\n\t\t\t\t\t\tfor (int j = 0; j < k; j++) {\n\t\t\t\t\t\t\tif (== array[j]) {\n\t\t\t\t\t\t\t\tg = 1;\n\t\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tif (!g) {\n\t\t\t\t\t\t\tarray[k] = array[i];\n\t\t\t\t\t\t\t k++;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\t*n=k;\n\t\t\t\t\tvisualiza(array, *n);\n\t\t\t\t}\n", DELAY);
+        setColor(3,0);
+        printSlowly("  \t\t\t\tA) la condizione nel if\n", DELAY);
+        printSlowly("  \t\t\t\tB) i punti e virgola\n", DELAY);
+        printSlowly("  \t\t\t\tC) l'incremento\n", DELAY);
+        risposta = Scelta();
+        if(risposta != 1)
+        {
+            (*LIFE)--;
+            char formattedMessage[100];
+            setColor(4, 0);
+            snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+            printSlowly(formattedMessage, DELAY);
+        }else
+        {
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+        }
+
+    checklife(*LIFE, cake);
+    }while (risposta != 1);
+
+    do
+    {
+        setColor(8, 0);
+        printf("\t\t\t\t1:");
+        scanf("%s", Scelt);
+        int len = strlen(Scelt);
+
+        if (Scelt[len - 1] == '\n')
+            {
+                Scelt[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelt, vero)!=0)
+            {
+                setColor(4, 0);
+                (*LIFE)--;
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+            }else{
+                setColor(2, 0);
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
+            }
+            checklife(*LIFE, cake);
+    }while(strcmp(Scelt, vero)!=0);
+
+    memset(Scelt, '\0', MAX);
+
+    do
+    {
+        setColor(3,0);
+        printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 2 -- \n", DELAY);//b
+        printSlowly("  \t\t\t\tA cosa serva manca a questo codice?\n", DELAY);
+        setColor(8,0);
+        printSlowly("  \t\t\t\tvoid visualiza(int *v, int n){\n\t\t\t\t\tfor(int i=0; i<n; i++){\n\t\t\t\t\t\tprintf(\"valore %d:%d\", i+1, v[i]);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tvoid inverti(int *v, int n){\n\t\t\t\t\t\tint *s_ptr = v;\n\t\t\t\t\t\tint *d_ptr = v+n-1;\n\t\t\t\t\t\twhile( < d_ptr){\n\t\t\t\t\t\t\tint t=*s_ptr;\n\t\t\t\t\t\t\t*s_ptr=*d_ptr;\n\t\t\t\t\t\t\t*d_ptr=t;\n\t\t\t\t\t\t\td_ptr--;\n\t\t\t\t\t\t\ts_ptr++;\n\t\t\t\t\t\t}\n\t\t\t\t\t\t\tvisualiza(v, n);\n\t\t\t\t}\n", DELAY);
+        setColor(3,0);
+        printSlowly("  \t\t\t\tA) la condizione nel ciclo for\n", DELAY);
+        printSlowly("  \t\t\t\tB) la condizione nel ciclo while\n", DELAY);
+        printSlowly("  \t\t\t\tC) l'incremento dei cilsi\n", DELAY);
+        risposta = Scelta();
+        if(risposta != 2)
+        {
+            (*LIFE)--;
+            char formattedMessage[100];
+            setColor(4, 0);
+            snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+            printSlowly(formattedMessage, DELAY);
+        }else
+        {
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+        }
+
+    checklife(*LIFE, cake);
+    }while (risposta != 2);
+
+    do
+    {
+        setColor(8, 0);
+        printf("\t\t\t\t1:");
+        scanf("%s", Scelt);
+        int len = strlen(Scelt);
+
+        if (Scelt[len - 1] == '\n')
+            {
+                Scelt[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelt, vero1)!=0)
+            {
+                setColor(4, 0);
+                (*LIFE)--;
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+            }else{
+                setColor(2, 0);
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
+            }
+            checklife(*LIFE, cake);
+    }while(strcmp(Scelt, vero1)!=0);
+
+    memset(Scelt, '\0', MAX);
+
+     do
+    {
+        setColor(3,0);
+        printSlowly("\n  \t\t\t\t -- DOMANDA NUMERO 3 -- \n", DELAY);//b
+        printSlowly("  \t\t\t\tCosa manca a questo codice?\n", DELAY);
+        setColor(8,0);
+        printSlowly("  \t\t\t\tvoid carica_dati_da_file(){ \n  \t\t\t\t\tFILE *fp = fopen(\"utenti.csv\", \"r\");\n  \t\t\t\t \tif (fp == 0) {\n  \t\t\t\t\t\tprintf(\"Errore nell'apertura del file\");\n  \t\t\t\t\t\texit(1);\n  \t\t\t\t\t}\n  \t\t\t\t     \tprintf(\"Dati letti dal file:\");\n  \t\t\t\t\tchar line[50];\n  \t\t\t\t\twhile (fgets(line, 50, fp) != 0){\n  \t\t\t\t\tprintf(\"%s\", line);\n  \t\t\t\t\t}\n  \t\t\t\t \tfclose(fp);\n\t\t\t\t}\n  \t\t\t\tvoid esiste(dbu arrayDBU[], int pt){\n  \t\t\t\t \tFILE *fp = fopen(\"utenti.csv\", \"r\");\n  \t\t\t\t\tif (fp == 0) {\n  \t\t\t\t \t\tprintf(\"Errore il file non essiste\");\n  \t\t\t\t \t\tfile(arrayDBU pt);\n  \t\t\t\t\t\tprintf(\"file creato\");\n  \t\t\t\t\t\treturn;\n  \t\t\t\t\t}\n  \t\t\t\t\tprintf(\"file essiste\");\n  \t\t\t\t\tfclose(fp);\n \t\t\t\t}\n", DELAY);
+        setColor(3,0);
+        printSlowly("  \t\t\t\tA) il un punto\n", DELAY);
+        printSlowly("  \t\t\t\tB) la una virgola\n", DELAY);
+        printSlowly("  \t\t\t\tC) il punto e virgola\n", DELAY);
+        risposta = Scelta();
+        if(risposta != 2)
+        {
+            (*LIFE)--;
+            char formattedMessage[100];
+            setColor(4, 0);
+            snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+            printSlowly(formattedMessage, DELAY);
+        }else
+        {
+            setColor(2, 0);
+            printSlowly("\n  \t\t\t\tCorretto!\n\n", DELAY);
+        }
+
+    checklife(*LIFE, cake);
+    }while (risposta != 2);
+    
+    do
+    {
+        setColor(8, 0);
+        printf("\t\t\t\t1:");
+        scanf("%s", Scelt);
+        int len = strlen(Scelt);
+
+        if (Scelt[len - 1] == '\n')
+            {
+                Scelt[len - 1] = '\0';
+            }
+    
+        while (getchar() != '\n');
+
+        if(strcmp(Scelt, vero2)!=0)
+            {
+                setColor(4, 0);
+                (*LIFE)--;
+                char formattedMessage[100];
+                snprintf(formattedMessage, sizeof(formattedMessage), "\n  \t\t\t\tRisposta sbagliata! \n  \t\t\t\tHai perso una vita! \n  \t\t\t\tAdesso hai %d vite \n\n", *LIFE);
+                printSlowly(formattedMessage, DELAY);
+            }else{
+                setColor(2, 0);
+                printSlowly("\n\t\t\t\t\tCorretto!\n\n", DELAY);
+            }
+            checklife(*LIFE, cake);
+    }while(strcmp(Scelt, vero2)!=0);
+    file(cake);
+    END(*LIFE, cake);
+}
+void GAMEOVER(int LIFE, int *cake){
     printf("\n");
     printf("  \t\t\t\tGGGGGGG   AAAAAA  MMM MMM   EEEEEEE    OOOOO   VV     VV  EEEEEEE  RRRRRR \t \t \n");
     printf("  \t\t\t\tG         A    A  MM M MM   E         O     O   VV   VV   E        R     R\t \t  \n");
@@ -1726,16 +1962,16 @@ void GAMEOVER(int LIFE){
     printf("  \t\t\t\tG     G   A    A  MM   MM   E         O     O     VVV     E        R   RR\t \t   \n");
     printf("  \t\t\t\tGGGGGGG   A    A  MM   MM   EEEEEEE    OOOOO       V      EEEEEEE  R     R\t \t  \n");
     printf("\n");
-    ripeti(&LIFE);
+    ripeti(&LIFE, cake);
 }
-void END(int LIFE){
-    setColor(2, 0);
+void END(int LIFE, int *cake){
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN     NN   DDDDDD\t\t\t   \n");
     printf("  \t\t\t\t\t\t\tE         NNN    NN   D     DD\t\t\t \n");
     printf("  \t\t\t\t\t\t\tEEEEE     NNNN   NN   D      DD\t\t\t\n");
     printf("  \t\t\t\t\t\t\tE         NN NN  NN   D     DD\t\t\t \n");
     printf("  \t\t\t\t\t\t\tEEEEEEE   NN  NN NN   DDDDDD\t\t\t   \n");
-    ripeti(&LIFE);
+    (*cake)=1;
+    ripeti(&LIFE, cake);
 }
 void BENVENUTO(){
     setColor(13, 0);
@@ -1749,7 +1985,7 @@ void BENVENUTO(){
     getchar();
     system("cls");
 }
-void ripeti(int *LIFE){
+void ripeti(int *LIFE, int *cake){
     char Scelta;
     char buffer[MAX];
     
@@ -1757,23 +1993,21 @@ void ripeti(int *LIFE){
         printSlowly("  \t\t\t\tVuoi riprovare? (y/n): ", DELAY);
         if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         
-        Scelta = buffer[0];
+            Scelta = buffer[0];
         
-        
-        if (Scelta == '\n' && buffer[1] == '\0') {
+            if (Scelta == '\n' && buffer[1] == '\0') {
             
-            Scelta = ' ';
+             Scelta = ' ';
+            }
+        } else {
+            fprintf(stderr, "Input error.\n");
+            exit(1);
         }
-    } else {
-        
-        fprintf(stderr, "Input error.\n");
-        exit(1);
-    }
         switch (Scelta) {
             case 'y':
             case 'Y':
                 *LIFE=3;
-                lvl_1(LIFE);
+                chiamate_salvate(LIFE, cake);
                 break; 
             case 'n':
             case 'N':
